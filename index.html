@@ -4,59 +4,90 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="description" content="Shantanu — AI Product Manager. Building AI Platforms, Agentic AI Systems, and Enterprise Cloud Solutions. 7.4 years experience. IIM Udaipur MBA."/>
-<meta name="og:title" content="Shantanu | AI Product Manager"/>
-<meta name="og:description" content="$3M agentic AI deal. 20% RTS reduction. Azure AI Factory GTM across 15+ markets."/>
+<meta property="og:title" content="Shantanu | AI Product Manager"/>
+<meta property="og:description" content="$3M agentic AI deal. 20% RTS reduction. Azure AI Factory GTM across 15+ markets."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://shantanu9.github.io"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Shantanu | AI Product Manager"/>
+<meta name="twitter:description" content="$3M agentic AI deal. 20% RTS reduction. Azure AI Factory GTM across 15+ markets."/>
 <title>Shantanu | AI Product Manager</title>
+
+<!-- Favicon: purple S -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236B5CE7'/><text x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='20' fill='white'>S</text></svg>"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#F8F8F6;--surface:#FFFFFF;--surface2:#F2F2F0;
-  --ink:#0A0A0A;--ink2:#3D3D3D;--ink3:#777672;
-  --accent:#6B5CE7;--accent-dim:rgba(107,92,231,0.1);--accent-border:rgba(107,92,231,0.25);
+  --ink:#0A0A0A;--ink2:#3D3D3D;--ink3:#6B6A66;
+  --accent:#6B5CE7;--accent-dim:rgba(107,92,231,0.1);
   --teal:#00A882;--teal-dim:rgba(0,168,130,0.1);
   --border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);
   --r:10px;--r-lg:16px;
+  --max:1080px;--read:680px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100px;left:1rem;background:var(--accent);color:#fff;padding:8px 16px;border-radius:var(--r);font-size:13px;font-weight:500;z-index:1000;transition:top .15s}
+.skip-link:focus{top:1rem}
+
 /* NAV */
 nav{position:sticky;top:0;z-index:200;background:rgba(248,248,246,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:52px;display:flex;align-items:center;padding:0 2rem}
-.nav-inner{width:100%;max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-inner{width:100%;max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.5px;color:var(--ink)}
 .nav-logo span{color:var(--accent)}
 .nav-links{display:flex;gap:1.75rem;list-style:none}
-.nav-links a{font-size:13px;font-weight:400;color:var(--ink3);transition:color .15s}
+.nav-links a{font-size:13px;color:var(--ink3);transition:color .15s}
 .nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:1rem}
 .nav-btn{font-size:12px;font-weight:500;padding:7px 16px;border:1px solid var(--border-strong);border-radius:20px;color:var(--ink);transition:all .15s;cursor:pointer;background:transparent}
 .nav-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;aria-label:"Open menu"}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;bottom:0;background:rgba(248,248,246,0.98);backdrop-filter:blur(20px);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;color:var(--ink);letter-spacing:-1px;transition:color .15s}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-menu .mob-cta{font-size:15px;font-weight:500;padding:12px 28px;background:var(--ink);color:#fff;border-radius:24px;margin-top:1rem}
+
 /* LAYOUT */
-.wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
-.wrap-pad{max-width:1080px;margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--border)}
+.wrap-pad{max-width:var(--max);margin:0 auto;padding:4rem 2rem;border-top:1px solid var(--border)}
 
 /* HERO */
-#hero{padding:5.5rem 2rem 4.5rem;max-width:1080px;margin:0 auto}
+#hero{padding:5.5rem 2rem 4.5rem;max-width:var(--max);margin:0 auto}
 .hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.75rem;display:flex;align-items:center;gap:8px}
 .hero-eyebrow::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(0,168,130,0.5);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(0,168,130,0.5)}50%{box-shadow:0 0 14px rgba(0,168,130,0.9)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 8px rgba(0,168,130,0.5)}50%{box-shadow:0 0 16px rgba(0,168,130,0.9)}}
 h1.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6.5vw,80px);font-weight:700;letter-spacing:-3px;line-height:1.0;color:var(--ink);margin-bottom:1.25rem}
 h1.hero-title .dim{color:var(--ink3);font-weight:300}
-.hero-sub{font-size:17px;color:var(--ink2);max-width:600px;line-height:1.7;margin-bottom:2.5rem;font-weight:300}
+.hero-sub{font-size:17px;color:var(--ink2);max-width:var(--read);line-height:1.7;margin-bottom:2.5rem;font-weight:300}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:4rem}
-.btn-dark{background:var(--ink);color:#fff;font-size:13px;font-weight:500;padding:10px 22px;border-radius:22px;transition:background .15s;border:none;cursor:pointer;display:inline-block}
+.btn-dark{background:var(--ink);color:#fff;font-size:13px;font-weight:500;padding:11px 24px;border-radius:22px;transition:background .15s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .btn-dark:hover{background:var(--accent)}
-.btn-line{border:1px solid var(--border-strong);color:var(--ink);font-size:13px;font-weight:400;padding:9px 22px;border-radius:22px;transition:all .15s;cursor:pointer;background:transparent;display:inline-block}
+.btn-line{border:1px solid var(--border-strong);color:var(--ink);font-size:13px;padding:10px 24px;border-radius:22px;transition:all .15s;cursor:pointer;background:transparent;display:inline-flex;align-items:center;gap:6px}
 .btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.btn-resume{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(107,92,231,0.2);font-size:13px;font-weight:500;padding:10px 24px;border-radius:22px;transition:all .15s;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.btn-resume:hover{background:var(--accent);color:#fff}
 
-/* STATS STRIP */
+/* STATS */
 .stats-strip{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--surface)}
-.stat{padding:1.25rem 1.5rem;border-right:1px solid var(--border)}
+.stat{padding:1.25rem 1.25rem;border-right:1px solid var(--border)}
 .stat:last-child{border-right:none}
-.stat-n{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;letter-spacing:-1px;color:var(--ink);margin-bottom:3px}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;letter-spacing:-1px;color:var(--ink);margin-bottom:3px}
 .stat-n .accent{color:var(--accent)}
 .stat-l{font-size:11px;color:var(--ink3);line-height:1.4}
 
@@ -64,36 +95,36 @@ h1.hero-title .dim{color:var(--ink3);font-weight:300}
 .sec-hd{margin-bottom:2.5rem}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.6rem}
 h2.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:700;letter-spacing:-1.5px;color:var(--ink);margin-bottom:0.4rem}
-.sec-desc{font-size:15px;color:var(--ink3);font-weight:300;max-width:480px}
+.sec-desc{font-size:15px;color:var(--ink3);font-weight:300;max-width:var(--read)}
 
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.proj-card{background:var(--surface);padding:2rem;transition:background .15s;position:relative}
+.proj-card{background:var(--surface);padding:2rem;transition:background .15s}
 .proj-card:hover{background:#FAFAF8}
-.proj-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;padding:4px 10px;background:var(--accent-dim);border-radius:4px;display:inline-block}
-.proj-tag.teal{color:var(--teal);background:var(--teal-dim)}
-.proj-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.5px;color:var(--ink);margin-bottom:0.6rem;line-height:1.25}
-.proj-problem{font-size:13px;color:var(--ink3);margin-bottom:1rem;line-height:1.55;font-weight:300}
+.proj-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;padding:4px 10px;background:var(--accent-dim);border-radius:4px;display:inline-block;font-weight:500}
+.proj-tag.teal{color:#007a5e;background:var(--teal-dim)}
+.proj-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.3px;color:var(--ink);margin-bottom:0.6rem;line-height:1.25}
+.proj-problem{font-size:13px;color:var(--ink3);margin-bottom:1rem;line-height:1.6;font-weight:300;max-width:var(--read)}
 .proj-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
 .metric{font-size:11px;font-weight:500;padding:3px 10px;border-radius:4px;background:var(--surface2);color:var(--ink2);border:1px solid var(--border)}
 .proj-artifacts{font-size:11px;color:var(--ink3);border-top:1px solid var(--border);padding-top:0.75rem;margin-top:0.75rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.artifact-pill{background:var(--accent-dim);color:var(--accent);padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500}
+.artifact-pill{background:var(--accent-dim);color:#4a3db5;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500}
 
 /* THINKING */
 .thinking-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.thinking-card{background:var(--surface);padding:1.75rem 2rem;transition:background .15s;cursor:pointer}
+.thinking-card{background:var(--surface);padding:1.75rem 2rem;transition:background .15s;cursor:pointer;display:block}
 .thinking-card:hover{background:#FAFAF8}
 .thinking-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);margin-bottom:0.75rem}
 .thinking-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.3px;color:var(--ink);margin-bottom:0.5rem;line-height:1.3}
-.thinking-desc{font-size:13px;color:var(--ink3);line-height:1.55;font-weight:300}
-.thinking-arrow{display:inline-block;margin-top:1rem;font-size:13px;color:var(--accent);font-family:'JetBrains Mono',monospace}
+.thinking-desc{font-size:13px;color:var(--ink3);line-height:1.6;font-weight:300;max-width:var(--read)}
+.thinking-arrow{display:inline-block;margin-top:1rem;font-size:12px;color:var(--accent);font-family:'JetBrains Mono',monospace;font-weight:500}
 
 /* SKILLS */
 .skills-outer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
 .skill-col{background:var(--surface);padding:1.75rem 1.5rem}
 .skill-col-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)}
-.skill-list{display:flex;flex-direction:column;gap:7px}
-.skill-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);font-weight:300}
+.skill-list{display:flex;flex-direction:column;gap:8px}
+.skill-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);line-height:1.4}
 .skill-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
 .skill-dot.teal{background:var(--teal)}
 .skill-dot.gray{background:var(--ink3)}
@@ -101,15 +132,23 @@ h2.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,3
 /* CAREER TIMELINE */
 .timeline{position:relative;padding-left:2rem}
 .timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border)}
-.tl-item{position:relative;margin-bottom:2.25rem;padding-left:1.5rem}
+.tl-item{position:relative;margin-bottom:2.5rem;padding-left:1.5rem}
 .tl-item::before{content:'';position:absolute;left:-2rem;top:6px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);transition:border-color .15s}
 .tl-item.active::before{border-color:var(--accent);background:var(--accent)}
 .tl-item:hover::before{border-color:var(--accent)}
 .tl-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);margin-bottom:4px;letter-spacing:0.3px}
-.tl-role{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-0.3px}
-.tl-company{font-size:13px;color:var(--ink3);margin-bottom:6px;font-weight:300}
-.tl-impact{font-size:13px;color:var(--ink2);line-height:1.55;font-weight:300;max-width:640px}
-.tl-tag{display:inline-block;margin-top:8px;font-size:11px;padding:3px 10px;border-radius:4px;background:var(--accent-dim);color:var(--accent);font-weight:500}
+.tl-role{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:2px;letter-spacing:-0.3px}
+.tl-company{font-size:13px;color:var(--ink3);margin-bottom:8px;font-weight:300}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.tl-bullets li{font-size:13px;color:var(--ink2);padding-left:14px;position:relative;line-height:1.5}
+.tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:11px;top:1px}
+.tl-tag{display:inline-block;margin-top:6px;font-size:11px;padding:3px 10px;border-radius:4px;background:var(--accent-dim);color:#4a3db5;font-weight:500}
+
+/* SOCIAL PROOF */
+.proof-strip{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:3rem}
+.proof-card{background:var(--surface);padding:1.5rem 1.75rem}
+.proof-quote{font-size:14px;color:var(--ink2);line-height:1.65;font-style:italic;margin-bottom:0.75rem;max-width:var(--read)}
+.proof-author{font-size:12px;font-weight:500;color:var(--ink3);font-family:'JetBrains Mono',monospace}
 
 /* CONTACT CTA */
 .cta-block{background:var(--ink);border-radius:var(--r-lg);padding:4.5rem 3rem;text-align:center;position:relative;overflow:hidden}
@@ -118,42 +157,61 @@ h2.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,3
 .cta-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-2px;color:#fff;margin-bottom:0.75rem;line-height:1.1}
 .cta-sub{font-size:15px;color:rgba(255,255,255,0.45);margin:0.75rem auto 2.5rem;font-weight:300;max-width:440px;line-height:1.6}
 .cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.btn-white{background:#fff;color:var(--ink);font-size:13px;font-weight:600;padding:10px 24px;border-radius:22px;transition:all .15s;cursor:pointer;border:none;display:inline-block}
+.btn-white{background:#fff;color:var(--ink);font-size:13px;font-weight:600;padding:11px 24px;border-radius:22px;transition:all .15s;display:inline-block}
 .btn-white:hover{background:var(--accent);color:#fff}
-.btn-ghost-white{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:400;padding:9px 24px;border-radius:22px;transition:all .15s;cursor:pointer;background:transparent;display:inline-block}
+.btn-ghost-white{border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;padding:10px 24px;border-radius:22px;transition:all .15s;display:inline-block}
 .btn-ghost-white:hover{border-color:rgba(107,92,231,0.6);color:#a89ef0}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;max-width:1080px;margin:0 auto}
-footer p{font-size:12px;color:var(--ink3);font-weight:300}
+footer{border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto}
+footer p{font-size:12px;color:var(--ink3)}
 .foot-links{display:flex;gap:1.5rem}
 .foot-links a{font-size:12px;color:var(--ink3);transition:color .15s}
 .foot-links a:hover{color:var(--ink)}
 
 /* RESPONSIVE */
-@media(max-width:768px){
+@media(max-width:900px){
   .stats-strip{grid-template-columns:repeat(3,1fr)}
-  .stat:nth-child(4),.stat:nth-child(5){border-top:1px solid var(--border)}
-  .proj-grid,.thinking-grid,.skills-outer{grid-template-columns:1fr}
+  .stat:nth-child(4){border-top:1px solid var(--border);border-right:1px solid var(--border)}
+  .stat:nth-child(5){border-top:1px solid var(--border);border-right:none}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .proj-grid,.thinking-grid,.skills-outer,.proof-strip{grid-template-columns:1fr}
   h1.hero-title{letter-spacing:-2px}
   #hero{padding:3.5rem 1.5rem 3rem}
-  .nav-links{display:none}
+  .wrap-pad{padding:3rem 1.5rem}
   .cta-block{padding:3rem 1.5rem}
   footer{flex-direction:column;gap:1rem;text-align:center}
-  .wrap-pad{padding:3rem 1.5rem}
+  .hero-actions{gap:8px}
 }
-@media(max-width:480px){
-  .stats-strip{grid-template-columns:repeat(2,1fr)}
-  .stat:nth-child(5){border-top:1px solid var(--border)}
+@media(max-width:520px){
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .stat:nth-child(4){border-top:1px solid var(--border);border-right:none}
+  .stat:nth-child(5){grid-column:span 2;border-top:1px solid var(--border);border-right:none}
+  .cta-btns{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#thinking" onclick="closeMenu()">Thinking</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#career" onclick="closeMenu()">Career</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="mailto:shantanuiimu@gmail.com" class="mob-cta" onclick="closeMenu()">Get in touch</a>
+</div>
+
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">shantanu<span>.</span></a>
+    <a href="#" class="nav-logo" aria-label="Shantanu — home">shantanu<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#thinking">Thinking</a></li>
@@ -161,11 +219,17 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <li><a href="#career">Career</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="mailto:shantanuiimu@gmail.com" class="nav-btn">Get in touch</a>
+    <div class="nav-right">
+      <a href="mailto:shantanuiimu@gmail.com" class="nav-btn">Get in touch</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
+<main id="main">
 <div id="hero">
   <div class="hero-eyebrow">Available · Dec 2026 · Senior AI PM Roles</div>
   <h1 class="hero-title">
@@ -178,29 +242,29 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
   </p>
   <div class="hero-actions">
     <a href="#projects" class="btn-dark">View projects</a>
-    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" class="btn-line">LinkedIn ↗</a>
-    <a href="mailto:shantanuiimu@gmail.com" class="btn-line">Download resume</a>
+    <a href="https://drive.google.com/your-resume-link" target="_blank" rel="noopener" class="btn-resume" aria-label="Download resume PDF">↓ Resume PDF</a>
+    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="btn-line">LinkedIn ↗</a>
   </div>
 
-  <div class="stats-strip">
-    <div class="stat">
+  <div class="stats-strip" role="list" aria-label="Key achievements">
+    <div class="stat" role="listitem">
       <div class="stat-n">7.4<span class="accent">yr</span></div>
       <div class="stat-l">Product<br/>experience</div>
     </div>
-    <div class="stat">
+    <div class="stat" role="listitem">
       <div class="stat-n">$<span class="accent">3M</span></div>
       <div class="stat-l">Agentic AI<br/>deal closed</div>
     </div>
-    <div class="stat">
+    <div class="stat" role="listitem">
       <div class="stat-n">20<span class="accent">%</span></div>
       <div class="stat-l">RTS reduction<br/>achieved</div>
     </div>
-    <div class="stat">
+    <div class="stat" role="listitem">
       <div class="stat-n">$<span class="accent">4M</span></div>
-      <div class="stat-l">Pipeline opportunity<br/>identified</div>
+      <div class="stat-l">Pipeline<br/>identified</div>
     </div>
-    <div class="stat">
-      <div class="stat-n" style="font-size:20px;padding-top:3px">IIM<span class="accent">U</span></div>
+    <div class="stat" role="listitem">
+      <div class="stat-n" style="font-size:19px;padding-top:4px">IIM<span class="accent">U</span></div>
       <div class="stat-l">MBA · Udaipur<br/>SAFe POPM</div>
     </div>
   </div>
@@ -215,13 +279,13 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
   </div>
   <div class="proj-grid">
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag">Agentic AI · Healthcare</span>
       <div class="proj-title">Co-Assist / RxComet — $3M Agentic AI Platform</div>
-      <p class="proj-problem">A major US PBM client needed to reduce real-time adjudication failures and accelerate Rx onboarding — manual workflows were creating downstream compliance risk at scale.</p>
+      <p class="proj-problem">US PBM client needed to reduce real-time adjudication failures and accelerate Rx onboarding — manual workflows were creating downstream compliance risk at scale.</p>
       <div class="proj-metrics">
         <span class="metric">20% RTS reduction</span>
-        <span class="metric">12-month contract extension</span>
+        <span class="metric">12-month extension</span>
         <span class="metric">PS Innovation Award</span>
         <span class="metric">25% cost savings</span>
       </div>
@@ -232,12 +296,12 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">RFP Response</span>
         <span class="artifact-pill">OKRs</span>
       </div>
-    </div>
+    </article>
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag teal">AI Economics · GTM</span>
       <div class="proj-title">AI Infra Sizing Calculator & TCO Model</div>
-      <p class="proj-problem">Enterprise buyers couldn't estimate AI deployment costs. Presales teams lacked a structured tool to convert use cases into infrastructure sizing and dollar-based breakeven models.</p>
+      <p class="proj-problem">Enterprise buyers couldn't estimate AI deployment costs. Presales teams lacked a tool to convert use cases into infrastructure sizing and dollar-based breakeven models.</p>
       <div class="proj-metrics">
         <span class="metric">$4M pipeline identified</span>
         <span class="metric">GPU · Token · CAPEX/OPEX</span>
@@ -249,9 +313,9 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">Business Case</span>
         <span class="artifact-pill">Breakeven Model</span>
       </div>
-    </div>
+    </article>
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag">Presales AI · GTM</span>
       <div class="proj-title">RFP Configurator — 5-Agent Presales Pipeline</div>
       <p class="proj-problem">RFP response cycles were slow and inconsistent. No AI-native tool existed to map customer requirements to Azure AI Factory capabilities and auto-generate bid artifacts.</p>
@@ -266,9 +330,9 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">React Prototype</span>
         <span class="artifact-pill">Agent Design Doc</span>
       </div>
-    </div>
+    </article>
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag teal">Enterprise AI · Azure</span>
       <div class="proj-title">Azure AI Factory GTM — 15+ Markets</div>
       <p class="proj-problem">HCLTech needed a differentiated AI Factory offering to win enterprise Azure modernization deals. No structured offering, pricing model, or presales collateral existed at launch.</p>
@@ -284,12 +348,12 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">ACR Matrix</span>
         <span class="artifact-pill">One-pager</span>
       </div>
-    </div>
+    </article>
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag">RAG · Open Source</span>
       <div class="proj-title">Agentic RAG Chatbot — Llama 3.2</div>
-      <p class="proj-problem">Demonstrating end-to-end agentic AI architecture as a PM portfolio artifact — from naive RAG through modular and agentic patterns with RAGAS evaluation and QLoRA fine-tuning.</p>
+      <p class="proj-problem">Demonstrating end-to-end agentic AI architecture as a PM portfolio artifact — from naive RAG through agentic patterns with RAGAS evaluation and QLoRA fine-tuning.</p>
       <div class="proj-metrics">
         <span class="metric">Llama 3.2 local</span>
         <span class="metric">RAGAS eval</span>
@@ -300,12 +364,12 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">github.com/shantanu9/chatbot</span>
         <span class="artifact-pill">github.com/shantanu9/agentic-ai</span>
       </div>
-    </div>
+    </article>
 
-    <div class="proj-card">
+    <article class="proj-card">
       <span class="proj-tag teal">Enterprise Automation · SAP</span>
       <div class="proj-title">Capital Lifecycle Automation — $0.8M Savings</div>
-      <p class="proj-problem">Manual capital project workflows at Accenture created processing delays and compliance gaps across 20+ business processes. End-to-end automation was needed with zero production risk.</p>
+      <p class="proj-problem">Manual capital project workflows at Accenture created processing delays across 20+ business processes. End-to-end automation was needed with zero production risk.</p>
       <div class="proj-metrics">
         <span class="metric">$0.8M OpEx saved</span>
         <span class="metric">Zero production issues</span>
@@ -317,7 +381,7 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
         <span class="artifact-pill">AS-IS/TO-BE</span>
         <span class="artifact-pill">RPA Automation</span>
       </div>
-    </div>
+    </article>
 
   </div>
 </div>
@@ -330,25 +394,25 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
     <p class="sec-desc">Frameworks, essays, and mental models from building AI products in production.</p>
   </div>
   <div class="thinking-grid">
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank">
+    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
       <div class="thinking-num">Essay 01</div>
       <div class="thinking-title">Why every enterprise AI pitch needs a sovereignty angle</div>
       <div class="thinking-desc">Data residency, on-prem control, and how Azure Local shifts the conversation with regulated buyers in BFSI and healthcare.</div>
       <div class="thinking-arrow">Read on LinkedIn ↗</div>
     </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank">
+    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
       <div class="thinking-num">Essay 02</div>
       <div class="thinking-title">RAG vs Knowledge Graphs — a PM's decision framework</div>
       <div class="thinking-desc">When to choose retrieval, when to choose structured knowledge, and how production tradeoffs differ from benchmark results.</div>
       <div class="thinking-arrow">Read on LinkedIn ↗</div>
     </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank">
+    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
       <div class="thinking-num">Essay 03</div>
       <div class="thinking-title">The economics of enterprise AI: GPU sizing for PMs</div>
       <div class="thinking-desc">Token economics, VRAM constraints, and CAPEX/OPEX modeling — what the architecture docs don't tell you about AI infrastructure cost.</div>
       <div class="thinking-arrow">Read on LinkedIn ↗</div>
     </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank">
+    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
       <div class="thinking-num">Essay 04</div>
       <div class="thinking-title">Building an AI PM portfolio when your best work is client IP</div>
       <div class="thinking-desc">How to reconstruct proof-of-work through open artifacts, weekend builds, and public writing without violating NDA.</div>
@@ -367,40 +431,40 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
     <div class="skill-col">
       <div class="skill-col-title">Product Management</div>
       <div class="skill-list">
-        <div class="skill-item"><span class="skill-dot"></span>Roadmap &amp; PRD</div>
-        <div class="skill-item"><span class="skill-dot"></span>GTM Strategy</div>
-        <div class="skill-item"><span class="skill-dot"></span>Agile / SAFe POPM</div>
-        <div class="skill-item"><span class="skill-dot"></span>CXO Storytelling</div>
-        <div class="skill-item"><span class="skill-dot"></span>OKR &amp; Metrics Design</div>
-        <div class="skill-item"><span class="skill-dot"></span>RFP &amp; Business Case</div>
-        <div class="skill-item"><span class="skill-dot"></span>Stakeholder Alignment</div>
-        <div class="skill-item"><span class="skill-dot"></span>Offering Management</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>Roadmap &amp; PRD</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>GTM Strategy</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>Agile / SAFe POPM</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>CXO Storytelling</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>OKR &amp; Metrics Design</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>RFP &amp; Business Case</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>Stakeholder Alignment</div>
+        <div class="skill-item"><span class="skill-dot" aria-hidden="true"></span>Offering Management</div>
       </div>
     </div>
     <div class="skill-col">
       <div class="skill-col-title">AI &amp; Architecture</div>
       <div class="skill-list">
-        <div class="skill-item"><span class="skill-dot teal"></span>LangGraph / Agentic AI</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>RAG Architecture</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>Azure OpenAI / GPT-4o</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>Azure AI Foundry</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>Prompt Engineering</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>LLM Evaluation / RAGAS</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>Fine-tuning (QLoRA)</div>
-        <div class="skill-item"><span class="skill-dot teal"></span>AI Governance</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>LangGraph / Agentic AI</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>RAG Architecture</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>Azure OpenAI / GPT-4o</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>Azure AI Foundry</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>Prompt Engineering</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>LLM Evaluation / RAGAS</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>Fine-tuning (QLoRA)</div>
+        <div class="skill-item"><span class="skill-dot teal" aria-hidden="true"></span>AI Governance</div>
       </div>
     </div>
     <div class="skill-col">
       <div class="skill-col-title">Technical &amp; Domain</div>
       <div class="skill-list">
-        <div class="skill-item"><span class="skill-dot gray"></span>SAP S/4HANA</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>US Healthcare PBM</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>Azure Cloud</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>SQL &amp; Analytics</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>Python (scripting)</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>React (prototyping)</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>GPU Infra Sizing</div>
-        <div class="skill-item"><span class="skill-dot gray"></span>Enterprise SaaS</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>SAP S/4HANA</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>US Healthcare PBM</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Azure Cloud</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>SQL &amp; Analytics</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Python (scripting)</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>React (prototyping)</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>GPU Infra Sizing</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Enterprise SaaS</div>
       </div>
     </div>
   </div>
@@ -413,13 +477,30 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
     <h2 class="sec-title">The journey.</h2>
     <p class="sec-desc">From SAP consulting to agentic AI product leadership.</p>
   </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="proof-strip" aria-label="Testimonials">
+    <div class="proof-card">
+      <div class="proof-quote">"Shantanu got the story right — the integrated AIForce on AI Factory narrative was exactly what we needed for enterprise positioning."</div>
+      <div class="proof-author">— Mukund Nair · Director of PM, AIForce Unit · HCLTech</div>
+    </div>
+    <div class="proof-card">
+      <div class="proof-quote">"Led the $3M agentic AI deal end-to-end — from RFP through architecture approval to production delivery. PS Innovation Award recipient."</div>
+      <div class="proof-author">— Publicis Sapient · Innovation Award · 2025</div>
+    </div>
+  </div>
+
   <div class="timeline">
 
     <div class="tl-item active">
       <div class="tl-meta">Feb 2026 — Present</div>
       <div class="tl-role">AI Product Manager — GTM &amp; Offering Strategy</div>
       <div class="tl-company">HCLTech · Hybrid Cloud Business Unit · Noida</div>
-      <div class="tl-impact">Leading Azure AI Factory offering across 15+ markets. Identified $4M pipeline opportunity through AI Force discovery engagements. Contributed to $0.25M Azure legacy modernization deal conversion.</div>
+      <ul class="tl-bullets">
+        <li>Identified $4M pipeline opportunity through AI Force discovery engagements across enterprise accounts</li>
+        <li>Contributed to $0.25M Azure legacy modernization deal conversion via GTM collateral and presales enablement</li>
+        <li>Capability lead for Azure AI Factory and AIForce on AI Factory — offering strategy, roadmap, and commercial packaging</li>
+      </ul>
       <span class="tl-tag">Azure AI Factory · AIForce · Cybersecurity AI · GTM</span>
     </div>
 
@@ -427,7 +508,11 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">Nov 2023 — Feb 2026</div>
       <div class="tl-role">AI Product Manager — Agentic AI Platform</div>
       <div class="tl-company">Publicis Sapient · Noida</div>
-      <div class="tl-impact">Drove $3M agentic AI MVP deal from RFP to production delivery. Designed Generator–Validator framework (LangGraph + Azure OpenAI). Achieved 20% RTS reduction, 25% cost savings, and a 12-month contract extension. PS Innovation Award.</div>
+      <ul class="tl-bullets">
+        <li>Drove $3M agentic AI MVP deal — led RFP response, solution design, and platform roadmap for major US PBM client</li>
+        <li>Achieved 20% RTS reduction and 25% cost savings; secured 12-month contract extension</li>
+        <li>Designed Generator–Validator framework (LangGraph + Azure OpenAI); secured EA &amp; AI Review Board approval</li>
+      </ul>
       <span class="tl-tag">LangGraph · GPT-4o · US Healthcare PBM · PS Innovation Award</span>
     </div>
 
@@ -435,7 +520,9 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">Aug 2023 — Nov 2023</div>
       <div class="tl-role">Deputy Manager — Product Management</div>
       <div class="tl-company">ABP Network · Digital Media · Noida</div>
-      <div class="tl-impact">Led product strategy and roadmap for ABP Live premium subscription offering across 10+ languages.</div>
+      <ul class="tl-bullets">
+        <li>Led product strategy and roadmap for ABP Live premium subscription across 10+ languages</li>
+      </ul>
       <span class="tl-tag">Digital Media · Subscription Product</span>
     </div>
 
@@ -443,7 +530,10 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">2022 — 2023</div>
       <div class="tl-role">MBA — Indian Institute of Management, Udaipur</div>
       <div class="tl-company">IIM Udaipur · GPA 3.32/4</div>
-      <div class="tl-impact">Founded IIM Udaipur Digital Summit (50K+ impressions, 2000+ registrations). Winner — SPJIMR Dexterity PM Competition. Runner-up — SDA Bocconi Creazione Product Competition.</div>
+      <ul class="tl-bullets">
+        <li>Founded IIM Udaipur Digital Summit — 50K+ impressions, 2000+ registrations</li>
+        <li>Winner — SPJIMR Dexterity PM Competition · Runner-up — SDA Bocconi Creazione</li>
+      </ul>
       <span class="tl-tag">IIM Udaipur · PM Competitions · Digital Summit Founder</span>
     </div>
 
@@ -451,7 +541,10 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">May 2020 — Apr 2022</div>
       <div class="tl-role">Product Owner — Enterprise Automation</div>
       <div class="tl-company">Accenture · Noida</div>
-      <div class="tl-impact">Generated $0.8M in OpEx savings through Capital Lifecycle Automation Project (CLAP) with zero production issues. Led PAR application delivery. Promoted to Senior Analyst. Multiple ACE Awards.</div>
+      <ul class="tl-bullets">
+        <li>Generated $0.8M OpEx savings through Capital Lifecycle Automation with zero production issues</li>
+        <li>Promoted to Senior Analyst · Multiple ACE Awards</li>
+      </ul>
       <span class="tl-tag">SAP · Fiori · RPA · $0.8M savings · ACE Award</span>
     </div>
 
@@ -459,7 +552,10 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">Feb 2018 — May 2020</div>
       <div class="tl-role">Associate Consultant — EAM Product Owner</div>
       <div class="tl-company">Wipro · Pune</div>
-      <div class="tl-impact">Product Owner for SAP Work Order Manager (Fiori). Reduced testing effort by 80% via RPA automation across Work Orders, Procurement, and Sales Orders. Launched cross-domain Number Range Automation Bot across 10+ product lines.</div>
+      <ul class="tl-bullets">
+        <li>Reduced testing effort by 80% via RPA automation across Work Orders, Procurement, and Sales Orders</li>
+        <li>Product Owner for SAP Work Order Manager (Fiori) with integrations across SAP PM, CS, CRM, FI, SD</li>
+      </ul>
       <span class="tl-tag">SAP EAM · Fiori · PIPO · RPA · 80% testing reduction</span>
     </div>
 
@@ -467,7 +563,9 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
       <div class="tl-meta">2013 — 2017</div>
       <div class="tl-role">B.Tech — Computer Science &amp; Engineering</div>
       <div class="tl-company">JSS Academy of Technical Education · AKTU · 71.92%</div>
-      <div class="tl-impact">Foundation in software engineering, systems design, and computer science fundamentals.</div>
+      <ul class="tl-bullets">
+        <li>Foundation in software engineering, systems design, and CS fundamentals</li>
+      </ul>
     </div>
 
   </div>
@@ -481,21 +579,41 @@ footer p{font-size:12px;color:var(--ink3);font-weight:300}
     <p class="cta-sub">Open to Senior AI PM roles at Microsoft, Salesforce, SAP Labs, ServiceNow, and product-first companies. Noida / remote.</p>
     <div class="cta-btns">
       <a href="mailto:shantanuiimu@gmail.com" class="btn-white">shantanuiimu@gmail.com</a>
-      <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" class="btn-ghost-white">LinkedIn ↗</a>
-      <a href="https://github.com/shantanu9" target="_blank" class="btn-ghost-white">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="btn-ghost-white">LinkedIn ↗</a>
+      <a href="https://github.com/shantanu9" target="_blank" rel="noopener" class="btn-ghost-white">GitHub ↗</a>
     </div>
   </div>
 </div>
+</main>
 
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Shantanu · AI Product Manager · Noida, India</p>
   <div class="foot-links">
-    <a href="https://github.com/shantanu9" target="_blank">GitHub</a>
-    <a href="https://instagram.com/shantanubuilds" target="_blank">@shantanubuilds</a>
-    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/shantanu9" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://instagram.com/shantanubuilds" target="_blank" rel="noopener">@shantanubuilds</a>
+    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
+<script>
+function toggleMenu(){
+  var menu=document.getElementById('mobileMenu');
+  var btn=document.getElementById('hamburger');
+  var open=menu.classList.toggle('open');
+  btn.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('hamburger').setAttribute('aria-expanded','false');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') closeMenu();
+});
+</script>
 </body>
 </html>
