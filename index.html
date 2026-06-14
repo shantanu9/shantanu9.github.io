@@ -145,7 +145,7 @@ h2.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,3
 
 /* THINKING */
 .thinking-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.thinking-card{background:var(--surface);padding:1.75rem 2rem;transition:background .15s;cursor:pointer;display:block}
+.thinking-card{background:var(--surface);padding:1.75rem 2rem;transition:background .15s}
 .thinking-card:hover{background:#FAFAF8}
 .thinking-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);margin-bottom:0.75rem}
 .thinking-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.3px;color:var(--ink);margin-bottom:0.5rem;line-height:1.3}
@@ -267,7 +267,7 @@ footer p{font-size:12px;color:var(--ink3)}
 <!-- HERO -->
 <main id="main">
 <div id="hero">
-  <div class="hero-eyebrow">Available · Dec 2026 · Senior AI PM Roles</div>
+
   <h1 class="hero-title">
     Building AI<br/>
     <span class="dim">Platforms &amp;</span><br/>
@@ -514,30 +514,26 @@ footer p{font-size:12px;color:var(--ink3)}
     <p class="sec-desc">Frameworks, essays, and mental models from building AI products in production.</p>
   </div>
   <div class="thinking-grid">
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
+    <div class="thinking-card">
       <div class="thinking-num">Essay 01</div>
       <div class="thinking-title">Why every enterprise AI pitch needs a sovereignty angle</div>
       <div class="thinking-desc">Data residency, on-prem control, and how Azure Local shifts the conversation with regulated buyers in BFSI and healthcare.</div>
-      <div class="thinking-arrow">Read on LinkedIn ↗</div>
-    </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
+    </div>
+    <div class="thinking-card">
       <div class="thinking-num">Essay 02</div>
       <div class="thinking-title">RAG vs Knowledge Graphs — a PM's decision framework</div>
       <div class="thinking-desc">When to choose retrieval, when to choose structured knowledge, and how production tradeoffs differ from benchmark results.</div>
-      <div class="thinking-arrow">Read on LinkedIn ↗</div>
-    </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
+    </div>
+    <div class="thinking-card">
       <div class="thinking-num">Essay 03</div>
       <div class="thinking-title">The economics of enterprise AI: GPU sizing for PMs</div>
       <div class="thinking-desc">Token economics, VRAM constraints, and CAPEX/OPEX modeling — what the architecture docs don't tell you about AI infrastructure cost.</div>
-      <div class="thinking-arrow">Read on LinkedIn ↗</div>
-    </a>
-    <a class="thinking-card" href="https://linkedin.com/in/shantanuss/" target="_blank" rel="noopener">
+    </div>
+    <div class="thinking-card">
       <div class="thinking-num">Essay 04</div>
       <div class="thinking-title">Building an AI PM portfolio when your best work is client IP</div>
       <div class="thinking-desc">How to reconstruct proof-of-work through open artifacts, weekend builds, and public writing without violating NDA.</div>
-      <div class="thinking-arrow">Read on LinkedIn ↗</div>
-    </a>
+    </div>
   </div>
 </div>
 
@@ -696,7 +692,7 @@ footer p{font-size:12px;color:var(--ink3)}
   <div class="cta-block">
     <div class="cta-eye">Senior AI PM · Available Dec 2026</div>
     <h2 class="cta-h">Let's build the<br/>next AI platform.</h2>
-    <p class="cta-sub">Open to Senior AI PM roles at Microsoft, Salesforce, SAP Labs, ServiceNow, and product-first companies. Noida / remote.</p>
+    <p class="cta-sub">Let's talk about building the next generation of AI products. Noida / remote.</p>
     <div class="cta-btns">
       <a href="mailto:shantanuiimu@gmail.com" class="btn-white">shantanuiimu@gmail.com</a>
       <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="btn-ghost-white">LinkedIn ↗</a>
