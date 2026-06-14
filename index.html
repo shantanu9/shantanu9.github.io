@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%236B5CE7'/><text x='16' y='23' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='20' fill='white'>S</text></svg>"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap&font-display=swap" rel="stylesheet"/>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -247,14 +247,111 @@ footer p{font-size:12px;color:var(--ink3)}
   .hero-photo img{width:120px;height:140px;border-radius:14px}
 }
 
+
+/* SCROLL PROGRESS */
+#scroll-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:9999;transition:width .1s linear}
+
+/* STATS — bigger numbers */
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;letter-spacing:-1.5px;color:var(--ink);margin-bottom:2px}
+.stat-l{font-size:10px;color:var(--ink3);line-height:1.4;letter-spacing:0.2px}
+
+/* PROJECT FILTER TABS */
+.proj-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.75rem}
+.pf-btn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;padding:6px 16px;border-radius:20px;border:1px solid var(--border-strong);background:transparent;color:var(--ink3);cursor:pointer;transition:all .15s;letter-spacing:0.3px}
+.pf-btn:hover{border-color:var(--accent);color:var(--accent)}
+.pf-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* PROJECT CARD hidden state */
+.proj-card.hidden{display:none}
+
+/* THINKING — reframed as Perspectives */
+.perspective-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+.perspective-card{background:var(--surface);padding:1.75rem 2rem;transition:background .15s}
+.perspective-card:hover{background:#FAFAF8}
+.perspective-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0.6rem;font-weight:500}
+.perspective-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.3px;color:var(--ink);margin-bottom:0.6rem;line-height:1.3}
+.perspective-body{font-size:13px;color:var(--ink3);line-height:1.65;font-weight:300}
+.perspective-tag{display:inline-flex;align-items:center;gap:5px;margin-top:1rem;font-size:11px;font-weight:600;color:var(--accent);font-family:'JetBrains Mono',monospace;letter-spacing:0.3px}
+
+/* ABOUT STRIP */
+.about-strip{background:var(--ink);border-radius:var(--r-lg);padding:2.5rem;margin-bottom:2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.about-quote{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;color:#fff;letter-spacing:-0.5px;line-height:1.3;max-width:680px}
+.about-quote em{color:rgba(107,92,231,0.85);font-style:normal}
+.about-meta{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.about-pill{font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);white-space:nowrap;text-align:center}
+
+/* CERT PILLS — colour grouped */
+.cert-group{margin-bottom:0.75rem}
+.cert-group-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.cert-pills{display:flex;flex-wrap:wrap;gap:6px}
+.cpill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px}
+.cpill-purple{background:var(--accent-dim);color:var(--accent)}
+.cpill-amber{background:rgba(186,117,23,0.12);color:#854f0b}
+.cpill-teal{background:var(--teal-dim);color:#0f6e56}
+.cpill-gray{background:var(--surface2);color:var(--ink2);border:1px solid var(--border)}
+.cpill-inprogress{background:transparent;color:var(--accent);border:1px dashed rgba(107,92,231,0.4)}
+
+/* HERO CTA secondary links */
+.hero-secondary{display:flex;gap:1.5rem;align-items:center;margin-top:0.75rem}
+.hero-link{font-size:13px;color:var(--ink3);text-decoration:none;transition:color .15s;display:inline-flex;align-items:center;gap:4px;padding:11px 4px}
+.hero-link:hover{color:var(--accent)}
+
+/* CAREER COLLAPSE */
+.tl-hidden{display:none}
+.tl-toggle-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--border-strong);color:var(--ink3);font-size:13px;font-weight:400;padding:8px 20px;border-radius:20px;cursor:pointer;margin-top:1.5rem;transition:all .15s;font-family:'Inter',sans-serif}
+.tl-toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tl-toggle-btn svg{transition:transform .25s}
+.tl-toggle-btn.expanded svg{transform:rotate(180deg)}
+
+/* HERO PHOTO accent frame */
+.hero-photo img{
+  width:220px;height:260px;object-fit:cover;object-position:center top;
+  border-radius:20px;display:block;
+  border:3px solid var(--accent);
+  box-shadow:8px 8px 0 rgba(107,92,231,0.15);
+}
+
+@media(max-width:768px){
+  .about-strip{grid-template-columns:1fr}
+  .about-meta{flex-direction:row;flex-wrap:wrap}
+  .perspective-grid{grid-template-columns:1fr}
+  .hero-photo img{width:120px;height:140px;border-radius:14px;box-shadow:4px 4px 0 rgba(107,92,231,0.15)}
+}
+
+
+/* SIDE QUESTS */
+#sidequests{background:var(--ink);margin:0;padding:4rem 2rem;border-top:none}
+.sq-inner{max-width:var(--max);margin:0 auto}
+.sq-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(107,92,231,0.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.6rem}
+.sq-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:700;letter-spacing:-1.5px;color:#fff;margin-bottom:0.4rem}
+.sq-desc{font-size:15px;color:rgba(255,255,255,0.4);font-weight:300;max-width:480px;margin-bottom:2.5rem}
+.sq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r-lg);overflow:hidden}
+.sq-card{background:#111111;padding:1.75rem;transition:background .15s;position:relative;overflow:hidden}
+.sq-card:hover{background:#161616}
+.sq-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(107,92,231,0.4),transparent);opacity:0;transition:opacity .2s}
+.sq-card:hover::before{opacity:1}
+.sq-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(107,92,231,0.7);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.9rem;display:flex;align-items:center;gap:6px}
+.sq-tag::before{content:'>';color:rgba(107,92,231,0.5)}
+.sq-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:0.5rem;letter-spacing:-0.2px;line-height:1.3}
+.sq-body{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.65;font-weight:300;margin-bottom:1rem}
+.sq-stack{display:flex;flex-wrap:wrap;gap:5px}
+.sq-pill{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:2px 8px;border-radius:4px;letter-spacing:0.3px}
+.sq-link{display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(107,92,231,0.7);letter-spacing:0.5px;margin-top:0.75rem;transition:color .15s;text-decoration:none}
+.sq-link:hover{color:#a89ef0}
+.sq-num{position:absolute;bottom:1.25rem;right:1.25rem;font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:rgba(255,255,255,0.04);letter-spacing:-1px;pointer-events:none;user-select:none}
+@media(max-width:900px){.sq-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sq-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 
+<div id="scroll-bar" role="progressbar" aria-label="Page scroll progress"></div>
 <a href="#main" class="skip-link">Skip to main content</a>
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
   <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#sidequests" onclick="closeMenu()">Side Quests</a>
   <a href="#thinking" onclick="closeMenu()">Thinking</a>
   <a href="#skills" onclick="closeMenu()">Skills</a>
   <a href="#career" onclick="closeMenu()">Career</a>
@@ -268,6 +365,7 @@ footer p{font-size:12px;color:var(--ink3)}
     <a href="#" class="nav-logo" aria-label="Shantanu — home">shantanu<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#sidequests">Side Quests</a></li>
       <li><a href="#thinking">Thinking</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#career">Career</a></li>
@@ -293,12 +391,13 @@ footer p{font-size:12px;color:var(--ink3)}
     Enterprise<span class="dim"> Systems.</span>
   </h1>
   <p class="hero-sub">
-    7.4 years shipping AI products — from a $3M agentic AI MVP to enterprise cloud GTM across 15+ markets. IIM Udaipur MBA. SAFe POPM certified.
+    I build AI platforms that close enterprise deals — $3M in agentic AI, GTM across 15+ markets, and the infrastructure tools that make both possible. IIM Udaipur MBA · SAFe POPM · Azure AI-900.
   </p>
   <div class="hero-actions">
-    <a href="#projects" class="btn-dark">View projects</a>
-    <a href="Shantanu_Resume.pdf" download="Shantanu_AI_PM_Resume.pdf" class="btn-resume" aria-label="Download resume PDF">↓ Resume PDF</a>
-    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="btn-line">LinkedIn ↗</a>
+    <a href="#projects" class="btn-dark">View my work</a>
+    <a href="Shantanu_Resume.pdf" download="Shantanu_AI_PM_Resume.pdf" class="hero-link" aria-label="Download resume PDF">↓ Resume PDF</a>
+    <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="hero-link">LinkedIn ↗</a>
+    <a href="https://github.com/shantanu9" target="_blank" rel="noopener" class="hero-link">GitHub ↗</a>
   </div>
 
   <div class="stats-strip" role="list" aria-label="Key achievements">
@@ -319,7 +418,7 @@ footer p{font-size:12px;color:var(--ink3)}
       <div class="stat-l">Pipeline<br/>identified</div>
     </div>
     <div class="stat" role="listitem">
-      <div class="stat-n" style="font-size:19px;padding-top:4px">IIM<span class="accent">U</span></div>
+      <div class="stat-n" style="font-size:22px">IIM<span class="accent">U</span></div>
       <div class="stat-l">MBA · Udaipur<br/>SAFe POPM</div>
     </div>
   </div>
@@ -329,14 +428,35 @@ footer p{font-size:12px;color:var(--ink3)}
 </div>
 </div>
 
+<!-- ABOUT -->
+<div class="wrap-pad" style="padding-bottom:0;border-top:none">
+  <div class="about-strip">
+    <div class="about-quote">
+      "I'm an AI PM who <em>ships</em> — from a $3M agentic AI deal in US healthcare to enterprise cloud GTM across 15+ markets. I build the tools, write the strategy, and close the room."
+    </div>
+    <div class="about-meta">
+      <span class="about-pill">IIM Udaipur MBA</span>
+      <span class="about-pill">B.Tech CS · 7+ yrs</span>
+      <span class="about-pill">Noida / Remote</span>
+    </div>
+  </div>
+</div>
+
 <!-- PROJECTS -->
 <div id="projects" class="wrap-pad">
   <div class="sec-hd">
     <div class="eyebrow">01 — Projects</div>
     <h2 class="sec-title">AI products I've shipped.</h2>
-    <p class="sec-desc">Case studies across agentic AI, enterprise cloud GTM, and AI infrastructure tooling.</p>
+    <p class="sec-desc">Client and employer work across agentic AI, enterprise cloud GTM, and data platforms. Personal builds are in Side Quests ↓</p>
   </div>
-  <div class="proj-grid">
+  <div class="proj-filters" role="group" aria-label="Filter projects">
+    <button class="pf-btn active" data-filter="all">All</button>
+    <button class="pf-btn" data-filter="agentic">Agentic AI</button>
+    <button class="pf-btn" data-filter="gtm">GTM &amp; Offering</button>
+    <button class="pf-btn" data-filter="data">Data Platform</button>
+    <button class="pf-btn" data-filter="enterprise">Enterprise</button>
+  </div>
+  <div class="proj-grid" id="proj-grid">
 
     <!-- CARD 1 -->
     <article class="proj-card">
@@ -364,76 +484,10 @@ footer p{font-size:12px;color:var(--ink3)}
       </div>
       <div class="proj-foot">
         <div class="proj-foot-left">
-          <div class="proj-foot-name">Co-Assist / RxComet</div>
+          <div class="proj-foot-name" data-proj-cat="agentic">Co-Assist / RxComet</div>
           <div class="proj-foot-meta">Agentic AI · US Healthcare PBM · Publicis Sapient</div>
         </div>
         <span class="proj-foot-tag purple">20% RTS↓</span>
-      </div>
-    </article>
-
-    <!-- CARD 2 -->
-    <article class="proj-card">
-      <div class="proj-thumb thumb-teal">
-        <div class="proj-thumb-inner">
-          <div class="mock-browser">
-            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
-            <div class="mock-screen">
-              <div class="mock-line teal-l"></div>
-              <div class="mock-line long"></div>
-              <div class="mock-line med"></div>
-              <div class="mock-metric"><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div></div>
-              <div class="mock-chart">
-                <div class="mock-bar-v" style="height:40%;background:rgba(0,168,130,0.35)"></div>
-                <div class="mock-bar-v" style="height:60%;background:rgba(0,168,130,0.5)"></div>
-                <div class="mock-bar-v" style="height:85%;background:rgba(0,168,130,0.75)"></div>
-                <div class="mock-bar-v" style="height:100%;background:#00A882"></div>
-                <div class="mock-bar-v" style="height:70%;background:rgba(0,168,130,0.6)"></div>
-              </div>
-            </div>
-          </div>
-          <span class="thumb-badge green">$4M Pipeline</span>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <div class="proj-foot-left">
-          <div class="proj-foot-name">AI Infra Sizing Calculator</div>
-          <div class="proj-foot-meta">AI Economics · TCO Model · HCLTech</div>
-        </div>
-        <span class="proj-foot-tag teal">GPU · CAPEX/OPEX</span>
-      </div>
-    </article>
-
-    <!-- CARD 3 -->
-    <article class="proj-card">
-      <div class="proj-thumb thumb-dark">
-        <div class="proj-thumb-inner">
-          <div class="mock-browser">
-            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
-            <div class="mock-screen">
-              <div class="mock-line accent"></div>
-              <div class="mock-line med"></div>
-              <div style="display:flex;gap:6px;margin-top:8px">
-                <div style="flex:1;background:rgba(107,92,231,0.2);border-radius:4px;padding:6px 4px">
-                  <div class="mock-line short" style="margin-bottom:4px"></div>
-                  <div class="mock-line" style="width:80%;background:rgba(107,92,231,0.5)"></div>
-                </div>
-                <div style="flex:1;background:rgba(107,92,231,0.2);border-radius:4px;padding:6px 4px">
-                  <div class="mock-line short" style="margin-bottom:4px"></div>
-                  <div class="mock-line" style="width:60%;background:rgba(107,92,231,0.5)"></div>
-                </div>
-              </div>
-              <div class="mock-metric" style="margin-top:10px"><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div></div>
-            </div>
-          </div>
-          <span class="thumb-badge purple">5 Agents</span>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <div class="proj-foot-left">
-          <div class="proj-foot-name">RFP Configurator</div>
-          <div class="proj-foot-meta">Presales AI · 5-Agent Pipeline · LangGraph</div>
-        </div>
-        <span class="proj-foot-tag purple">React Proto</span>
       </div>
     </article>
 
@@ -460,39 +514,10 @@ footer p{font-size:12px;color:var(--ink3)}
       </div>
       <div class="proj-foot">
         <div class="proj-foot-left">
-          <div class="proj-foot-name">Azure AI Factory GTM</div>
+          <div class="proj-foot-name" data-proj-cat="gtm">Azure AI Factory GTM</div>
           <div class="proj-foot-meta">Enterprise AI · Offering Strategy · HCLTech</div>
         </div>
         <span class="proj-foot-tag teal">$0.25M Close</span>
-      </div>
-    </article>
-
-    <!-- CARD 5 -->
-    <article class="proj-card">
-      <div class="proj-thumb thumb-indigo">
-        <div class="proj-thumb-inner">
-          <div class="mock-browser">
-            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
-            <div class="mock-screen">
-              <div class="mock-line accent"></div>
-              <div style="background:rgba(107,92,231,0.15);border-radius:4px;padding:8px;margin-top:6px">
-                <div class="mock-line short" style="background:rgba(107,92,231,0.6)"></div>
-                <div class="mock-line med"></div>
-                <div class="mock-line long"></div>
-              </div>
-              <div class="mock-line short" style="margin-top:8px;background:rgba(107,92,231,0.4)"></div>
-              <div class="mock-line med" style="margin-top:4px"></div>
-            </div>
-          </div>
-          <span class="thumb-badge purple">QLoRA</span>
-        </div>
-      </div>
-      <div class="proj-foot">
-        <div class="proj-foot-left">
-          <div class="proj-foot-name">Agentic RAG Chatbot</div>
-          <div class="proj-foot-meta">Open Source · Llama 3.2 · RAGAS Eval</div>
-        </div>
-        <span class="proj-foot-tag purple">GitHub ↗</span>
       </div>
     </article>
 
@@ -519,43 +544,251 @@ footer p{font-size:12px;color:var(--ink3)}
       </div>
       <div class="proj-foot">
         <div class="proj-foot-left">
-          <div class="proj-foot-name">Capital Lifecycle Automation</div>
+          <div class="proj-foot-name" data-proj-cat="enterprise">Capital Lifecycle Automation</div>
           <div class="proj-foot-meta">SAP · RPA · Enterprise Automation · Accenture</div>
         </div>
         <span class="proj-foot-tag teal">80% Test↓</span>
       </div>
     </article>
 
+    <!-- CARD 7 -->
+    <article class="proj-card">
+      <div class="proj-thumb thumb-slate">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line teal-l"></div>
+              <div class="mock-line long"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:8px">
+                <div style="background:rgba(0,168,130,0.2);border-radius:3px;height:32px"></div>
+                <div style="background:rgba(0,168,130,0.15);border-radius:3px;height:32px"></div>
+                <div style="background:rgba(0,168,130,0.1);border-radius:3px;height:32px"></div>
+              </div>
+              <div class="mock-line med" style="margin-top:8px"></div>
+              <div class="mock-line short" style="margin-top:4px"></div>
+            </div>
+          </div>
+          <span class="thumb-badge green">GCP Migration</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name" data-proj-cat="data">Ford Pro — Dealer Advisor Platform</div>
+          <div class="proj-foot-meta">Data TPM · GCP · BigQuery · Publicis Sapient</div>
+        </div>
+        <span class="proj-foot-tag teal">Teradata→BQ</span>
+      </div>
+    </article>
+
+    <!-- CARD 8 -->
+    <article class="proj-card">
+      <div class="proj-thumb thumb-purple">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line accent"></div>
+              <div class="mock-line long"></div>
+              <div style="background:rgba(107,92,231,0.15);border-radius:4px;padding:8px;margin-top:6px">
+                <div class="mock-line short" style="background:rgba(107,92,231,0.6)"></div>
+                <div class="mock-line med" style="margin-top:4px"></div>
+                <div class="mock-line long" style="margin-top:4px"></div>
+              </div>
+              <div class="mock-metric" style="margin-top:8px"><div class="mock-chip"></div><div class="mock-chip"></div></div>
+            </div>
+          </div>
+          <span class="thumb-badge purple">API Strategy</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name" data-proj-cat="enterprise">UK Luxury Hotel — Enterprise API PM</div>
+          <div class="proj-foot-meta">API Strategy · Roadmap · User Journeys · PS</div>
+        </div>
+        <span class="proj-foot-tag purple">Digital Transformation</span>
+      </div>
+    </article>
+
+    <!-- CARD 9 -->
+    <article class="proj-card">
+      <div class="proj-thumb thumb-teal">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line teal-l"></div>
+              <div class="mock-line long"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-metric"><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div></div>
+              <div class="mock-line short" style="margin-top:8px;background:rgba(0,168,130,0.5)"></div>
+            </div>
+          </div>
+          <span class="thumb-badge green">20+ Features</span>
+        </div>
+      </div>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name" data-proj-cat="enterprise">HARMAN — Remote Care Platform</div>
+          <div class="proj-foot-meta">Healthcare PM · Competitive Analysis · UX</div>
+        </div>
+        <span class="proj-foot-tag teal">Pricing Strategy</span>
+      </div>
+    </article>
+
   </div>
 </div>
 
-<!-- THINKING -->
+
+<!-- SIDE QUESTS -->
+<div id="sidequests">
+  <div class="sq-inner">
+    <div class="sq-eyebrow">Side Quests</div>
+    <h2 class="sq-title">Built outside work hours.</h2>
+    <p class="sq-desc">Personal builds, weekend projects, and self-initiated tools — proof of builder instinct beyond the job description.</p>
+    <div class="sq-grid">
+
+      <div class="sq-card" onclick="window.open('https://github.com/shantanu9/chatbot','_blank')" style="cursor:pointer">
+        <div class="sq-tag">Agentic AI · Open Source</div>
+        <div class="sq-name">Agentic RAG Chatbot — Llama 3.2</div>
+        <div class="sq-body">End-to-end agentic AI built locally over a weekend. Naive → modular → agentic RAG pipeline with RAGAS evaluation. Fine-tuned with QLoRA/Unsloth on Colab on an Azure AI Factory domain dataset.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">Llama 3.2</span>
+          <span class="sq-pill">RAG</span>
+          <span class="sq-pill">RAGAS</span>
+          <span class="sq-pill">QLoRA</span>
+          <span class="sq-pill">Unsloth</span>
+        </div>
+        <a href="https://github.com/shantanu9/chatbot" target="_blank" rel="noopener" class="sq-link" onclick="event.stopPropagation()">github.com/shantanu9/chatbot ↗</a>
+        <div class="sq-num">01</div>
+      </div>
+
+      <div class="sq-card" onclick="window.open('https://github.com/shantanu9/agentic-ai','_blank')" style="cursor:pointer">
+        <div class="sq-tag">Presales AI · React</div>
+        <div class="sq-name">RFP Configurator — 5-Agent Pipeline</div>
+        <div class="sq-body">Built because no AI-native RFP tool existed for Azure AI Factory presales. Five agents parse RFPs, map to capabilities, generate bid responses, and flag risk. PRD + React prototype, end to end.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">React</span>
+          <span class="sq-pill">LangGraph</span>
+          <span class="sq-pill">GPT-4o</span>
+          <span class="sq-pill">5 agents</span>
+        </div>
+        <a href="https://github.com/shantanu9/agentic-ai" target="_blank" rel="noopener" class="sq-link" onclick="event.stopPropagation()">github.com/shantanu9/agentic-ai ↗</a>
+        <div class="sq-num">02</div>
+      </div>
+
+      <div class="sq-card">
+        <div class="sq-tag">AI Economics · HTML Tool</div>
+        <div class="sq-name">AI Infra Sizing Calculator</div>
+        <div class="sq-body">Interactive HTML tool for GPU sizing, token economics, and CAPEX/OPEX modeling. Built because enterprise buyers had no way to estimate AI deployment cost. Deployed in HCLTech presales — identified $4M pipeline in 3 months.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">HTML/JS</span>
+          <span class="sq-pill">GPU mapping</span>
+          <span class="sq-pill">Token econ</span>
+          <span class="sq-pill">CAPEX/OPEX</span>
+        </div>
+        <div class="sq-num">03</div>
+      </div>
+
+      <div class="sq-card">
+        <div class="sq-tag">AI Evaluation · Claude API</div>
+        <div class="sq-name">AI PM Interview Evaluator</div>
+        <div class="sq-body">React app that evaluates AI PM interview answers in real-time using Claude API. Scores responses on frameworks, structured thinking, and depth. Built to sharpen my own interview prep — now a reusable tool.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">React</span>
+          <span class="sq-pill">Claude API</span>
+          <span class="sq-pill">Anthropic</span>
+        </div>
+        <div class="sq-num">04</div>
+      </div>
+
+      <div class="sq-card">
+        <div class="sq-tag">Fine-tuning · ML</div>
+        <div class="sq-name">Azure AI Factory Domain Fine-tune</div>
+        <div class="sq-body">Generated a domain-specific dataset for Azure AI Factory and ran QLoRA fine-tuning on Google Colab using Unsloth. Documented the full process — from data generation to eval — for AI Factory MaaS positioning use cases.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">QLoRA</span>
+          <span class="sq-pill">Unsloth</span>
+          <span class="sq-pill">Colab</span>
+          <span class="sq-pill">SFT</span>
+          <span class="sq-pill">GGUF</span>
+        </div>
+        <div class="sq-num">05</div>
+      </div>
+
+      <div class="sq-card">
+        <div class="sq-tag">Multi-agent · Assessment</div>
+        <div class="sq-name">8-Agent AI Assessment Simulator</div>
+        <div class="sq-body">Multi-agent system that simulates enterprise AI readiness assessments — generating maturity scores, gap analysis, and recommended Azure AI Factory deployment models. Built to accelerate enterprise AI discovery conversations.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">8 agents</span>
+          <span class="sq-pill">LangGraph</span>
+          <span class="sq-pill">Maturity model</span>
+        </div>
+        <div class="sq-num">06</div>
+      </div>
+
+      <div class="sq-card" onclick="window.open('https://v0-participant-lifecycle-tool.vercel.app/','_blank')" style="cursor:pointer">
+        <div class="sq-tag">AI Data Ops · Product Tool</div>
+        <div class="sq-name">Participant Lifecycle Management</div>
+        <div class="sq-body">End-to-end platform for managing AI model training data collection — participant recruitment, scheduling, consent, payments, and compliance. Built for Vision AI use cases requiring 5000+ hours of high-quality recordings.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">AI Data Ops</span>
+          <span class="sq-pill">Lifecycle mgmt</span>
+          <span class="sq-pill">Compliance</span>
+          <span class="sq-pill">v0</span>
+        </div>
+        <a href="https://v0-participant-lifecycle-tool.vercel.app/" target="_blank" rel="noopener" class="sq-link" onclick="event.stopPropagation()">v0-participant-lifecycle-tool.vercel.app ↗</a>
+        <div class="sq-num">07</div>
+      </div>
+
+      <div class="sq-card" onclick="window.open('https://v0-story-vocab.vercel.app/','_blank')" style="cursor:pointer">
+        <div class="sq-tag">EdTech · Consumer Product</div>
+        <div class="sq-name">Story Builder</div>
+        <div class="sq-body">Interactive story and vocabulary building tool — a consumer EdTech product prototype exploring AI-assisted language learning and narrative generation for young learners.</div>
+        <div class="sq-stack">
+          <span class="sq-pill">EdTech</span>
+          <span class="sq-pill">AI storytelling</span>
+          <span class="sq-pill">Consumer PM</span>
+          <span class="sq-pill">v0</span>
+        </div>
+        <a href="https://v0-story-vocab.vercel.app/" target="_blank" rel="noopener" class="sq-link" onclick="event.stopPropagation()">v0-story-vocab.vercel.app ↗</a>
+        <div class="sq-num">08</div>
+      </div>
+
+    </div>
+  </div>
+</div>
 <div id="thinking" class="wrap-pad">
   <div class="sec-hd">
-    <div class="eyebrow">02 — Thinking</div>
-    <h2 class="sec-title">How I think about AI.</h2>
-    <p class="sec-desc">Frameworks, essays, and mental models from building AI products in production.</p>
+    <div class="eyebrow">02 — Perspectives</div>
+    <h2 class="sec-title">How I think.</h2>
+    <p class="sec-desc">Hard-won opinions from shipping AI products in production — not theory, not benchmarks.</p>
   </div>
-  <div class="thinking-grid">
-    <div class="thinking-card">
-      <div class="thinking-num">Essay 01</div>
-      <div class="thinking-title">Why every enterprise AI pitch needs a sovereignty angle</div>
-      <div class="thinking-desc">Data residency, on-prem control, and how Azure Local shifts the conversation with regulated buyers in BFSI and healthcare.</div>
+  <div class="perspective-grid">
+    <div class="perspective-card">
+      <div class="perspective-eyebrow">Enterprise AI · GTM</div>
+      <div class="perspective-title">Every enterprise AI pitch needs a sovereignty angle</div>
+      <div class="perspective-body">Regulated buyers — BFSI, healthcare, government — don't buy AI on capability alone. They buy it when you solve the data residency problem first. Azure Local changed my entire GTM playbook at HCLTech. The pitch isn't "our AI is better." It's "your data never leaves your boundary."</div>
+      <div class="perspective-tag">📝 Essay coming soon on LinkedIn</div>
     </div>
-    <div class="thinking-card">
-      <div class="thinking-num">Essay 02</div>
-      <div class="thinking-title">RAG vs Knowledge Graphs — a PM's decision framework</div>
-      <div class="thinking-desc">When to choose retrieval, when to choose structured knowledge, and how production tradeoffs differ from benchmark results.</div>
+    <div class="perspective-card">
+      <div class="perspective-eyebrow">AI Architecture · Product</div>
+      <div class="perspective-title">RAG vs Knowledge Graphs: the PM's real decision</div>
+      <div class="perspective-body">Benchmarks will tell you RAG wins. Production will tell you it depends. When I designed Co-Assist for the US PBM client, we chose structured KG for regulatory lookup and RAG for clinical narrative. The architecture choice is a product tradeoff, not a tech preference.</div>
+      <div class="perspective-tag">📝 Essay coming soon on LinkedIn</div>
     </div>
-    <div class="thinking-card">
-      <div class="thinking-num">Essay 03</div>
-      <div class="thinking-title">The economics of enterprise AI: GPU sizing for PMs</div>
-      <div class="thinking-desc">Token economics, VRAM constraints, and CAPEX/OPEX modeling — what the architecture docs don't tell you about AI infrastructure cost.</div>
+    <div class="perspective-card">
+      <div class="perspective-eyebrow">AI Economics · Infra PM</div>
+      <div class="perspective-title">GPU sizing is a product skill, not an infra skill</div>
+      <div class="perspective-body">When a CIO asks "what will this cost?", the answer lives in token economics, VRAM constraints, and batch size — not in a vendor quote. I built the AI Infra Sizing Calculator at HCLTech because no PM tool existed for this. It identified a $4M pipeline in 3 months.</div>
+      <div class="perspective-tag">📝 Essay coming soon on LinkedIn</div>
     </div>
-    <div class="thinking-card">
-      <div class="thinking-num">Essay 04</div>
-      <div class="thinking-title">Building an AI PM portfolio when your best work is client IP</div>
-      <div class="thinking-desc">How to reconstruct proof-of-work through open artifacts, weekend builds, and public writing without violating NDA.</div>
+    <div class="perspective-card">
+      <div class="perspective-eyebrow">Career · AI PM</div>
+      <div class="perspective-title">Your best PM work is probably locked behind an NDA</div>
+      <div class="perspective-body">The $3M agentic AI deal, the Ford Pro GCP migration, the UK hotel API strategy — none of it is publicly linkable. So I rebuilt the proof: open-source chatbot, sizing calculator, RFP configurator. The portfolio IS the signal. Client IP blocks showing, not building.</div>
+      <div class="perspective-tag">📝 Essay coming soon on LinkedIn</div>
     </div>
   </div>
 </div>
@@ -598,12 +831,48 @@ footer p{font-size:12px;color:var(--ink3)}
       <div class="skill-list">
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>SAP S/4HANA</div>
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>US Healthcare PBM</div>
-        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Azure Cloud</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Azure Cloud / GCP</div>
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>SQL &amp; Analytics</div>
-        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Python (scripting)</div>
+        <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Python · ML (sklearn)</div>
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>React (prototyping)</div>
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>GPU Infra Sizing</div>
         <div class="skill-item"><span class="skill-dot gray" aria-hidden="true"></span>Enterprise SaaS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div style="margin-top:1.5rem;border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem 1.75rem;background:var(--surface)">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border)">Certifications, Awards &amp; Recognition</div>
+    <div class="cert-group">
+      <div class="cert-group-label">Certifications</div>
+      <div class="cert-pills">
+        <span class="cpill cpill-purple">SAFe POPM ✓</span>
+        <span class="cpill cpill-purple">Azure AI-900 ✓</span>
+        <span class="cpill cpill-inprogress">Azure AI-102 — in progress</span>
+        <span class="cpill cpill-teal">Intro to ChatGPT &amp; GenAI ✓</span>
+      </div>
+    </div>
+    <div class="cert-group">
+      <div class="cert-group-label">Awards</div>
+      <div class="cert-pills">
+        <span class="cpill cpill-amber">🏆 PS Innovation Award</span>
+        <span class="cpill cpill-amber">Delivery Excellence Award</span>
+        <span class="cpill cpill-amber">Extraordinaire Performance Award</span>
+        <span class="cpill cpill-amber">ACE Award — Extra Mile</span>
+      </div>
+    </div>
+    <div class="cert-group">
+      <div class="cert-group-label">Competitions</div>
+      <div class="cert-pills">
+        <span class="cpill cpill-teal">🥇 Winner — SPJIMR Dexterity PM</span>
+        <span class="cpill cpill-teal">🥈 Runner-up — SDA Bocconi Creazione</span>
+      </div>
+    </div>
+    <div class="cert-group" style="margin-bottom:0">
+      <div class="cert-group-label">Publication</div>
+      <div class="cert-pills">
+        <span class="cpill cpill-gray">Big Data Analytics in E-Governance: A Review</span>
       </div>
     </div>
   </div>
@@ -645,14 +914,15 @@ footer p{font-size:12px;color:var(--ink3)}
 
     <div class="tl-item">
       <div class="tl-meta">Nov 2023 — Feb 2026</div>
-      <div class="tl-role">AI Product Manager — Agentic AI Platform</div>
+      <div class="tl-role">AI Product Manager — Multi-Domain</div>
       <div class="tl-company">Publicis Sapient · Noida</div>
       <ul class="tl-bullets">
-        <li>Drove $3M agentic AI MVP deal — led RFP response, solution design, and platform roadmap for major US PBM client</li>
-        <li>Achieved 20% RTS reduction and 25% cost savings; secured 12-month contract extension</li>
-        <li>Designed Generator–Validator framework (LangGraph + Azure OpenAI); secured EA &amp; AI Review Board approval</li>
+        <li>Drove $3M agentic AI MVP deal (Co-Assist/RxComet) for US Healthcare PBM — 20% RTS reduction, 25% cost savings, 12-month extension, PS Innovation Award</li>
+        <li>Designed Generator–Validator agentic framework (LangGraph + Azure OpenAI); secured Enterprise Architecture &amp; AI Review Board approval</li>
+        <li>Data TPM for Ford Pro Dealer Advisor — led GCP migration (Teradata→BigQuery, MSSQL→Cloud SQL), improving data architecture resilience</li>
+        <li>Enterprise API PM for UK luxury hotel chain — created API strategy, roadmap, and functional requirements for digital transformation initiative</li>
       </ul>
-      <span class="tl-tag">LangGraph · GPT-4o · US Healthcare PBM · PS Innovation Award</span>
+      <span class="tl-tag">LangGraph · GPT-4o · GCP · BigQuery · US Healthcare · Automotive · PS Innovation Award</span>
     </div>
 
     <div class="tl-item">
@@ -666,11 +936,34 @@ footer p{font-size:12px;color:var(--ink3)}
     </div>
 
     <div class="tl-item">
+      <div class="tl-meta">Jun 2023 — Jul 2023 <span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:rgba(186,117,23,0.12);color:#854f0b;margin-left:6px;letter-spacing:0.3px">Internship</span></div>
+      <div class="tl-role">Product Marketing Manager</div>
+      <div class="tl-company">Unstop · Delhi</div>
+      <ul class="tl-bullets">
+        <li>Discovered 20+ product features via user interviews, competitive analysis, and journey mapping</li>
+        <li>Drove development of Resume Builder and Artefact Management products using Figma, Google Analytics, PRD</li>
+      </ul>
+      <span class="tl-tag">Consumer PM · Figma · User Research · Feature Discovery</span>
+    </div>
+
+    <div id="tl-extra" class="tl-hidden">
+    <div class="tl-item">
+      <div class="tl-meta">Nov 2022 — Mar 2023 <span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:rgba(186,117,23,0.12);color:#854f0b;margin-left:6px;letter-spacing:0.3px">Internship</span></div>
+      <div class="tl-role">Product Manager — Platform Growth</div>
+      <div class="tl-company">HARMAN International · Udaipur</div>
+      <ul class="tl-bullets">
+        <li>Conducted in-depth research on remote care platform and healthcare industry — competitive analysis, market research, customer journey mapping across payer, provider, and patient personas</li>
+        <li>Delivered application audit, pricing structure recommendations, and platform enhancement roadmap</li>
+      </ul>
+      <span class="tl-tag">Healthcare · Platform PM · Competitive Analysis · UX · Pricing</span>
+    </div>
+
+    <div class="tl-item">
       <div class="tl-meta">2022 — 2023</div>
       <div class="tl-role">MBA — Indian Institute of Management, Udaipur</div>
       <div class="tl-company">IIM Udaipur · GPA 3.32/4</div>
       <ul class="tl-bullets">
-        <li>Founded IIM Udaipur Digital Summit — 50K+ impressions, 2000+ registrations</li>
+        <li>Co-Convener &amp; Founder — Aadhunik: The Digital Summit · 50K+ impressions, 2000+ registrations</li>
         <li>Winner — SPJIMR Dexterity PM Competition · Runner-up — SDA Bocconi Creazione</li>
       </ul>
       <span class="tl-tag">IIM Udaipur · PM Competitions · Digital Summit Founder</span>
@@ -681,21 +974,35 @@ footer p{font-size:12px;color:var(--ink3)}
       <div class="tl-role">Product Owner — Enterprise Automation</div>
       <div class="tl-company">Accenture · Noida</div>
       <ul class="tl-bullets">
-        <li>Generated $0.8M OpEx savings through Capital Lifecycle Automation with zero production issues</li>
-        <li>Promoted to Senior Analyst · Multiple ACE Awards</li>
+        <li>Generated $0.8M OpEx savings through Capital Lifecycle Automation (CLAP) with zero production issues · Promoted to Senior Analyst</li>
+        <li>Enhanced HR timesheet efficiency by 80% and improved customer satisfaction by 20% through Fiori dashboard delivery</li>
+        <li>SAP PM/Maximo integration for Oil &amp; Gas client — modules: SAP PM, PS, OpenText, FI-AP</li>
+        <li>Multiple ACE Awards including Extra Mile Award · Delivery Excellence Award</li>
       </ul>
-      <span class="tl-tag">SAP · Fiori · RPA · $0.8M savings · ACE Award</span>
+      <span class="tl-tag">SAP · Fiori · RPA · $0.8M savings · ACE Award · Delivery Excellence</span>
     </div>
 
     <div class="tl-item">
       <div class="tl-meta">Feb 2018 — May 2020</div>
-      <div class="tl-role">Associate Consultant — EAM Product Owner</div>
+      <div class="tl-role">Consultant &amp; ML Trainee — EAM Product Owner</div>
       <div class="tl-company">Wipro · Pune</div>
       <ul class="tl-bullets">
+        <li>Product Owner for SAP Work Order Manager (Fiori) — integrations across SAP PM, CS, CRM, FI, SD, Maximo, PowerPlan</li>
         <li>Reduced testing effort by 80% via RPA automation across Work Orders, Procurement, and Sales Orders</li>
-        <li>Product Owner for SAP Work Order Manager (Fiori) with integrations across SAP PM, CS, CRM, FI, SD</li>
+        <li>ML foundations: ensemble learning, PCA/LDA, regression models, association rule mining — all implemented in Python</li>
       </ul>
-      <span class="tl-tag">SAP EAM · Fiori · PIPO · RPA · 80% testing reduction</span>
+      <span class="tl-tag">SAP EAM · Fiori · RPA · Python · ML · 80% testing reduction</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-meta">Aug 2017 — Jan 2018</div>
+      <div class="tl-role">Service Validation Engineer / Assistant Manager</div>
+      <div class="tl-company">Reliance Jio · Gurgaon</div>
+      <ul class="tl-bullets">
+        <li>Quality Analyst for Jio applications — issue identification, resolution, and delivery sign-off for JioPhone</li>
+        <li>Led branding and marketing of JioPhone launch across Delhi-NCR · Business sign-off for Jiofication of The Oberoi, New Delhi</li>
+      </ul>
+      <span class="tl-tag">Telecom · QA · Product Launch · JioPhone</span>
     </div>
 
     <div class="tl-item">
@@ -704,8 +1011,15 @@ footer p{font-size:12px;color:var(--ink3)}
       <div class="tl-company">JSS Academy of Technical Education · AKTU · 71.92%</div>
       <ul class="tl-bullets">
         <li>Foundation in software engineering, systems design, and CS fundamentals</li>
+        <li>Published: "Big Data Analytics in E-Governance: A Review"</li>
       </ul>
     </div>
+    </div><!-- end tl-extra -->
+
+    <button class="tl-toggle-btn" id="tl-toggle" onclick="toggleTimeline()" aria-expanded="false">
+      <span id="tl-toggle-label">Show full career (5 more roles)</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4.5L7 9.5L12 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
 
   </div>
 </div>
@@ -736,6 +1050,7 @@ footer p{font-size:12px;color:var(--ink3)}
 </footer>
 
 <script>
+/* NAV */
 function toggleMenu(){
   var menu=document.getElementById('mobileMenu');
   var btn=document.getElementById('hamburger');
@@ -750,9 +1065,56 @@ function closeMenu(){
   document.getElementById('hamburger').setAttribute('aria-expanded','false');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape') closeMenu();
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
+
+/* SCROLL PROGRESS */
+window.addEventListener('scroll',function(){
+  var el=document.getElementById('scroll-bar');
+  if(!el) return;
+  var scrolled=document.documentElement.scrollTop;
+  var total=document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  el.style.width=(scrolled/total*100)+'%';
 });
+
+/* PROJECT FILTER */
+document.addEventListener('DOMContentLoaded',function(){
+  var btns=document.querySelectorAll('.pf-btn');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f=btn.getAttribute('data-filter');
+      document.querySelectorAll('.proj-card').forEach(function(card){
+        if(f==='all'){
+          card.classList.remove('hidden');
+        } else {
+          var nameEl=card.querySelector('[data-proj-cat]');
+          var cat=nameEl ? nameEl.getAttribute('data-proj-cat') : '';
+          if(cat===f){ card.classList.remove('hidden'); } else { card.classList.add('hidden'); }
+        }
+      });
+    });
+  });
+});
+
+/* TIMELINE TOGGLE */
+function toggleTimeline(){
+  var extra=document.getElementById('tl-extra');
+  var btn=document.getElementById('tl-toggle');
+  var label=document.getElementById('tl-toggle-label');
+  var expanded=btn.getAttribute('aria-expanded')==='true';
+  if(expanded){
+    extra.classList.add('tl-hidden');
+    btn.classList.remove('expanded');
+    btn.setAttribute('aria-expanded','false');
+    label.textContent='Show full career (5 more roles)';
+  } else {
+    extra.classList.remove('tl-hidden');
+    btn.classList.add('expanded');
+    btn.setAttribute('aria-expanded','true');
+    label.textContent='Collapse';
+  }
+}
 </script>
 </body>
 </html>
