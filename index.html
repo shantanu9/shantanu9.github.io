@@ -97,18 +97,51 @@ h1.hero-title .dim{color:var(--ink3);font-weight:300}
 h2.sec-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,3.5vw,36px);font-weight:700;letter-spacing:-1.5px;color:var(--ink);margin-bottom:0.4rem}
 .sec-desc{font-size:15px;color:var(--ink3);font-weight:300;max-width:var(--read)}
 
-/* PROJECTS */
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.proj-card{background:var(--surface);padding:2rem;transition:background .15s}
-.proj-card:hover{background:#FAFAF8}
-.proj-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem;padding:4px 10px;background:var(--accent-dim);border-radius:4px;display:inline-block;font-weight:500}
-.proj-tag.teal{color:#007a5e;background:var(--teal-dim)}
-.proj-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600;letter-spacing:-0.3px;color:var(--ink);margin-bottom:0.6rem;line-height:1.25}
-.proj-problem{font-size:13px;color:var(--ink3);margin-bottom:1rem;line-height:1.6;font-weight:300;max-width:var(--read)}
-.proj-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem}
-.metric{font-size:11px;font-weight:500;padding:3px 10px;border-radius:4px;background:var(--surface2);color:var(--ink2);border:1px solid var(--border)}
-.proj-artifacts{font-size:11px;color:var(--ink3);border-top:1px solid var(--border);padding-top:0.75rem;margin-top:0.75rem;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.artifact-pill{background:var(--accent-dim);color:#4a3db5;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:500}
+/* PROJECTS — gallery grid */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj-card{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s;cursor:pointer}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+/* thumbnail area */
+.proj-thumb{height:200px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.proj-thumb-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+/* mock browser chrome inside thumbnail */
+.mock-browser{width:88%;background:#1a1a2e;border-radius:8px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.mock-bar{background:#2d2d44;padding:8px 12px;display:flex;align-items:center;gap:6px}
+.mock-dot{width:8px;height:8px;border-radius:50%}
+.mock-dot.r{background:#ff5f57}.mock-dot.y{background:#febc2e}.mock-dot.g{background:#28c840}
+.mock-url{flex:1;background:#3d3d5c;border-radius:4px;height:16px;margin-left:8px}
+.mock-screen{padding:14px;min-height:110px}
+/* colour schemes per card */
+.thumb-purple{background:linear-gradient(135deg,#1a0533 0%,#2d1b69 100%)}
+.thumb-teal{background:linear-gradient(135deg,#012a20 0%,#064e3b 100%)}
+.thumb-dark{background:linear-gradient(135deg,#0f0f1a 0%,#1e1b4b 100%)}
+.thumb-slate{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)}
+.thumb-indigo{background:linear-gradient(135deg,#160b3d 0%,#312e81 100%)}
+.thumb-green{background:linear-gradient(135deg,#052e16 0%,#14532d 100%)}
+/* mock content lines */
+.mock-line{height:6px;border-radius:3px;margin-bottom:7px;background:rgba(255,255,255,0.12)}
+.mock-line.short{width:55%}
+.mock-line.med{width:75%}
+.mock-line.long{width:90%}
+.mock-line.accent{background:rgba(107,92,231,0.6);width:40%}
+.mock-line.teal-l{background:rgba(0,168,130,0.5);width:35%}
+.mock-metric{display:flex;gap:6px;margin-top:10px}
+.mock-chip{height:18px;border-radius:4px;background:rgba(107,92,231,0.3);flex:1}
+.mock-chip.teal-c{background:rgba(0,168,130,0.3)}
+.mock-chart{display:flex;align-items:flex-end;gap:4px;height:44px;margin-top:10px}
+.mock-bar-v{border-radius:3px 3px 0 0;flex:1}
+/* card footer label area */
+.proj-foot{background:var(--ink);padding:1.1rem 1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem}
+.proj-foot-left{}
+.proj-foot-name{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:3px;letter-spacing:-0.2px;line-height:1.2}
+.proj-foot-meta{font-size:11px;color:rgba(255,255,255,0.45);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px}
+.proj-foot-tag{font-size:10px;font-weight:600;padding:3px 9px;border-radius:4px;letter-spacing:0.5px;white-space:nowrap;align-self:flex-start;margin-top:2px}
+.proj-foot-tag.purple{background:var(--accent-dim);color:#a89ef0}
+.proj-foot-tag.teal{background:rgba(0,168,130,0.15);color:#4ade80}
+/* metric badges on thumbnail */
+.thumb-badge{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px}
+.thumb-badge.green{background:rgba(0,168,130,0.7)}
+.thumb-badge.purple{background:rgba(107,92,231,0.7)}
 
 /* THINKING */
 .thinking-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
@@ -174,6 +207,9 @@ footer p{font-size:12px;color:var(--ink3)}
   .stats-strip{grid-template-columns:repeat(3,1fr)}
   .stat:nth-child(4){border-top:1px solid var(--border);border-right:1px solid var(--border)}
   .stat:nth-child(5){border-top:1px solid var(--border);border-right:none}
+}
+@media(max-width:900px){
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .nav-links{display:none}
@@ -242,7 +278,7 @@ footer p{font-size:12px;color:var(--ink3)}
   </p>
   <div class="hero-actions">
     <a href="#projects" class="btn-dark">View projects</a>
-    <a href="https://drive.google.com/your-resume-link" target="_blank" rel="noopener" class="btn-resume" aria-label="Download resume PDF">↓ Resume PDF</a>
+    <a href="Shantanu_Resume.pdf" download="Shantanu_AI_PM_Resume.pdf" class="btn-resume" aria-label="Download resume PDF">↓ Resume PDF</a>
     <a href="https://www.linkedin.com/in/shantanuss/" target="_blank" rel="noopener" class="btn-line">LinkedIn ↗</a>
   </div>
 
@@ -279,107 +315,191 @@ footer p{font-size:12px;color:var(--ink3)}
   </div>
   <div class="proj-grid">
 
+    <!-- CARD 1 -->
     <article class="proj-card">
-      <span class="proj-tag">Agentic AI · Healthcare</span>
-      <div class="proj-title">Co-Assist / RxComet — $3M Agentic AI Platform</div>
-      <p class="proj-problem">US PBM client needed to reduce real-time adjudication failures and accelerate Rx onboarding — manual workflows were creating downstream compliance risk at scale.</p>
-      <div class="proj-metrics">
-        <span class="metric">20% RTS reduction</span>
-        <span class="metric">12-month extension</span>
-        <span class="metric">PS Innovation Award</span>
-        <span class="metric">25% cost savings</span>
+      <div class="proj-thumb thumb-purple">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line accent"></div>
+              <div class="mock-line long"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-line short"></div>
+              <div class="mock-metric"><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div></div>
+              <div class="mock-chart">
+                <div class="mock-bar-v" style="height:30%;background:rgba(107,92,231,0.4)"></div>
+                <div class="mock-bar-v" style="height:55%;background:rgba(107,92,231,0.6)"></div>
+                <div class="mock-bar-v" style="height:75%;background:rgba(107,92,231,0.8)"></div>
+                <div class="mock-bar-v" style="height:90%;background:#6B5CE7"></div>
+                <div class="mock-bar-v" style="height:65%;background:rgba(107,92,231,0.6)"></div>
+              </div>
+            </div>
+          </div>
+          <span class="thumb-badge purple">$3M Deal</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Artifacts:</span>
-        <span class="artifact-pill">PRD</span>
-        <span class="artifact-pill">Agentic Architecture</span>
-        <span class="artifact-pill">RFP Response</span>
-        <span class="artifact-pill">OKRs</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">Co-Assist / RxComet</div>
+          <div class="proj-foot-meta">Agentic AI · US Healthcare PBM · Publicis Sapient</div>
+        </div>
+        <span class="proj-foot-tag purple">20% RTS↓</span>
       </div>
     </article>
 
+    <!-- CARD 2 -->
     <article class="proj-card">
-      <span class="proj-tag teal">AI Economics · GTM</span>
-      <div class="proj-title">AI Infra Sizing Calculator & TCO Model</div>
-      <p class="proj-problem">Enterprise buyers couldn't estimate AI deployment costs. Presales teams lacked a tool to convert use cases into infrastructure sizing and dollar-based breakeven models.</p>
-      <div class="proj-metrics">
-        <span class="metric">$4M pipeline identified</span>
-        <span class="metric">GPU · Token · CAPEX/OPEX</span>
-        <span class="metric">Deployed in presales</span>
+      <div class="proj-thumb thumb-teal">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line teal-l"></div>
+              <div class="mock-line long"></div>
+              <div class="mock-line med"></div>
+              <div class="mock-metric"><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div></div>
+              <div class="mock-chart">
+                <div class="mock-bar-v" style="height:40%;background:rgba(0,168,130,0.35)"></div>
+                <div class="mock-bar-v" style="height:60%;background:rgba(0,168,130,0.5)"></div>
+                <div class="mock-bar-v" style="height:85%;background:rgba(0,168,130,0.75)"></div>
+                <div class="mock-bar-v" style="height:100%;background:#00A882"></div>
+                <div class="mock-bar-v" style="height:70%;background:rgba(0,168,130,0.6)"></div>
+              </div>
+            </div>
+          </div>
+          <span class="thumb-badge green">$4M Pipeline</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Artifacts:</span>
-        <span class="artifact-pill">HTML Calculator</span>
-        <span class="artifact-pill">Business Case</span>
-        <span class="artifact-pill">Breakeven Model</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">AI Infra Sizing Calculator</div>
+          <div class="proj-foot-meta">AI Economics · TCO Model · HCLTech</div>
+        </div>
+        <span class="proj-foot-tag teal">GPU · CAPEX/OPEX</span>
       </div>
     </article>
 
+    <!-- CARD 3 -->
     <article class="proj-card">
-      <span class="proj-tag">Presales AI · GTM</span>
-      <div class="proj-title">RFP Configurator — 5-Agent Presales Pipeline</div>
-      <p class="proj-problem">RFP response cycles were slow and inconsistent. No AI-native tool existed to map customer requirements to Azure AI Factory capabilities and auto-generate bid artifacts.</p>
-      <div class="proj-metrics">
-        <span class="metric">5-agent pipeline</span>
-        <span class="metric">React prototype</span>
-        <span class="metric">LangGraph</span>
+      <div class="proj-thumb thumb-dark">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line accent"></div>
+              <div class="mock-line med"></div>
+              <div style="display:flex;gap:6px;margin-top:8px">
+                <div style="flex:1;background:rgba(107,92,231,0.2);border-radius:4px;padding:6px 4px">
+                  <div class="mock-line short" style="margin-bottom:4px"></div>
+                  <div class="mock-line" style="width:80%;background:rgba(107,92,231,0.5)"></div>
+                </div>
+                <div style="flex:1;background:rgba(107,92,231,0.2);border-radius:4px;padding:6px 4px">
+                  <div class="mock-line short" style="margin-bottom:4px"></div>
+                  <div class="mock-line" style="width:60%;background:rgba(107,92,231,0.5)"></div>
+                </div>
+              </div>
+              <div class="mock-metric" style="margin-top:10px"><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div><div class="mock-chip"></div></div>
+            </div>
+          </div>
+          <span class="thumb-badge purple">5 Agents</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Artifacts:</span>
-        <span class="artifact-pill">PRD</span>
-        <span class="artifact-pill">React Prototype</span>
-        <span class="artifact-pill">Agent Design Doc</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">RFP Configurator</div>
+          <div class="proj-foot-meta">Presales AI · 5-Agent Pipeline · LangGraph</div>
+        </div>
+        <span class="proj-foot-tag purple">React Proto</span>
       </div>
     </article>
 
+    <!-- CARD 4 -->
     <article class="proj-card">
-      <span class="proj-tag teal">Enterprise AI · Azure</span>
-      <div class="proj-title">Azure AI Factory GTM — 15+ Markets</div>
-      <p class="proj-problem">HCLTech needed a differentiated AI Factory offering to win enterprise Azure modernization deals. No structured offering, pricing model, or presales collateral existed at launch.</p>
-      <div class="proj-metrics">
-        <span class="metric">$0.25M conversion</span>
-        <span class="metric">15+ markets</span>
-        <span class="metric">CIO-facing narrative</span>
+      <div class="proj-thumb thumb-slate">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line teal-l"></div>
+              <div class="mock-line long"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px">
+                <div style="background:rgba(0,168,130,0.15);border-radius:3px;height:28px"></div>
+                <div style="background:rgba(0,168,130,0.15);border-radius:3px;height:28px"></div>
+                <div style="background:rgba(0,168,130,0.1);border-radius:3px;height:20px"></div>
+                <div style="background:rgba(0,168,130,0.1);border-radius:3px;height:20px"></div>
+              </div>
+              <div class="mock-line med" style="margin-top:8px"></div>
+            </div>
+          </div>
+          <span class="thumb-badge green">15+ Markets</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Artifacts:</span>
-        <span class="artifact-pill">Pitch Deck</span>
-        <span class="artifact-pill">T-shirt Sizing</span>
-        <span class="artifact-pill">ACR Matrix</span>
-        <span class="artifact-pill">One-pager</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">Azure AI Factory GTM</div>
+          <div class="proj-foot-meta">Enterprise AI · Offering Strategy · HCLTech</div>
+        </div>
+        <span class="proj-foot-tag teal">$0.25M Close</span>
       </div>
     </article>
 
+    <!-- CARD 5 -->
     <article class="proj-card">
-      <span class="proj-tag">RAG · Open Source</span>
-      <div class="proj-title">Agentic RAG Chatbot — Llama 3.2</div>
-      <p class="proj-problem">Demonstrating end-to-end agentic AI architecture as a PM portfolio artifact — from naive RAG through agentic patterns with RAGAS evaluation and QLoRA fine-tuning.</p>
-      <div class="proj-metrics">
-        <span class="metric">Llama 3.2 local</span>
-        <span class="metric">RAGAS eval</span>
-        <span class="metric">QLoRA fine-tuned</span>
+      <div class="proj-thumb thumb-indigo">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line accent"></div>
+              <div style="background:rgba(107,92,231,0.15);border-radius:4px;padding:8px;margin-top:6px">
+                <div class="mock-line short" style="background:rgba(107,92,231,0.6)"></div>
+                <div class="mock-line med"></div>
+                <div class="mock-line long"></div>
+              </div>
+              <div class="mock-line short" style="margin-top:8px;background:rgba(107,92,231,0.4)"></div>
+              <div class="mock-line med" style="margin-top:4px"></div>
+            </div>
+          </div>
+          <span class="thumb-badge purple">QLoRA</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Code:</span>
-        <span class="artifact-pill">github.com/shantanu9/chatbot</span>
-        <span class="artifact-pill">github.com/shantanu9/agentic-ai</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">Agentic RAG Chatbot</div>
+          <div class="proj-foot-meta">Open Source · Llama 3.2 · RAGAS Eval</div>
+        </div>
+        <span class="proj-foot-tag purple">GitHub ↗</span>
       </div>
     </article>
 
+    <!-- CARD 6 -->
     <article class="proj-card">
-      <span class="proj-tag teal">Enterprise Automation · SAP</span>
-      <div class="proj-title">Capital Lifecycle Automation — $0.8M Savings</div>
-      <p class="proj-problem">Manual capital project workflows at Accenture created processing delays across 20+ business processes. End-to-end automation was needed with zero production risk.</p>
-      <div class="proj-metrics">
-        <span class="metric">$0.8M OpEx saved</span>
-        <span class="metric">Zero production issues</span>
-        <span class="metric">80% testing effort cut</span>
+      <div class="proj-thumb thumb-green">
+        <div class="proj-thumb-inner">
+          <div class="mock-browser">
+            <div class="mock-bar"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span><div class="mock-url"></div></div>
+            <div class="mock-screen">
+              <div class="mock-line teal-l"></div>
+              <div class="mock-line long"></div>
+              <div class="mock-metric"><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div><div class="mock-chip teal-c"></div></div>
+              <div class="mock-chart">
+                <div class="mock-bar-v" style="height:50%;background:rgba(0,168,130,0.3)"></div>
+                <div class="mock-bar-v" style="height:100%;background:#00A882"></div>
+                <div class="mock-bar-v" style="height:70%;background:rgba(0,168,130,0.6)"></div>
+                <div class="mock-bar-v" style="height:85%;background:rgba(0,168,130,0.75)"></div>
+              </div>
+            </div>
+          </div>
+          <span class="thumb-badge green">$0.8M Saved</span>
+        </div>
       </div>
-      <div class="proj-artifacts">
-        <span style="font-size:11px;color:var(--ink3)">Artifacts:</span>
-        <span class="artifact-pill">PRD</span>
-        <span class="artifact-pill">AS-IS/TO-BE</span>
-        <span class="artifact-pill">RPA Automation</span>
+      <div class="proj-foot">
+        <div class="proj-foot-left">
+          <div class="proj-foot-name">Capital Lifecycle Automation</div>
+          <div class="proj-foot-meta">SAP · RPA · Enterprise Automation · Accenture</div>
+        </div>
+        <span class="proj-foot-tag teal">80% Test↓</span>
       </div>
     </article>
 
