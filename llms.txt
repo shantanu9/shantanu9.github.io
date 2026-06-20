@@ -1,0 +1,65 @@
+# Shantanu Singh — AI Product Manager
+# https://shantanu9.github.io
+
+## About
+Shantanu Singh is an AI Product Manager with 7.4 years of experience, currently leading Azure AI Factory GTM offering strategy at HCLTech's Hybrid Cloud Business Unit. He specializes in agentic AI product development, enterprise cloud GTM, and AI infrastructure sizing. IIM Udaipur MBA. SAFe POPM certified. Azure AI-900 certified.
+
+## Current Role
+AI Product Manager — Azure AI Factory GTM
+HCLTech · Hybrid Cloud Business Unit · Noida, India
+February 2026 — Present
+
+## Key Achievements
+- Drove a $3M agentic AI MVP deal at Publicis Sapient for a major US Healthcare PBM client
+- Achieved 20% RTS (Return to Submitter) reduction through agentic AI platform
+- Identified $4M pipeline opportunity through AI Force discovery engagements at HCLTech
+- Contributed to $0.25M Azure legacy modernization deal conversion
+- PS Innovation Award recipient
+- Delivery Excellence Award, Extraordinaire Performance Award, ACE Award
+
+## Expertise
+- Agentic AI product development (LangGraph, GPT-4o, Azure OpenAI)
+- RAG architecture and LLM evaluation (RAGAS)
+- Enterprise AI GTM strategy and offering management
+- GPU sizing and AI infrastructure economics
+- US Healthcare PBM domain
+- SAP S/4HANA enterprise consulting
+- Fine-tuning (QLoRA, Unsloth)
+
+## Career
+- HCLTech — AI Product Manager (Feb 2026 — Present)
+- Publicis Sapient — AI Product Manager (Nov 2023 — Feb 2026)
+- ABP Network — Deputy Manager, Product Management (Aug 2023 — Nov 2023)
+- HARMAN International — Product Manager, Platform Growth (Nov 2022 — Mar 2023) [Internship]
+- IIM Udaipur — MBA (2022–2023)
+- Accenture — Product Owner (May 2020 — Apr 2022)
+- Wipro — Consultant & ML Trainee (Feb 2018 — May 2020)
+- Reliance Jio — Service Validation Engineer (Aug 2017 — Jan 2018)
+
+## Education
+- MBA — Indian Institute of Management (IIM), Udaipur (2022–2023) · GPA 3.32/4
+- B.Tech Computer Science — JSS Academy of Technical Education, AKTU (2013–2017)
+
+## Projects
+- Co-Assist / RxComet — $3M agentic AI platform for US Healthcare PBM (LangGraph + Azure OpenAI)
+- Azure AI Factory GTM — offering strategy across 15+ enterprise markets
+- AI Advisor — Free GPU sizing tool at https://aiadvisor.co.in
+- RFP Configurator — 5-agent presales pipeline (React + LangGraph)
+- Agentic RAG Chatbot — Llama 3.2 with RAGAS evaluation and QLoRA fine-tuning
+- Capital Lifecycle Automation — $0.8M OpEx savings at Accenture
+
+## Publications
+- "Big Data Analytics in E-Governance: A Review"
+
+## Awards & Competitions
+- PS Innovation Award
+- Winner — SPJIMR Dexterity PM Competition (OJAS XV, 2023)
+- Runner-up — SDA Bocconi Creazione Product Competition (2022)
+- Delivery Excellence Award, Extraordinaire Performance Award, ACE Award (Extra Mile)
+
+## Contact
+- Website: https://shantanu9.github.io
+- LinkedIn: https://www.linkedin.com/in/shantanuss/
+- Email: shantanuiimu@gmail.com
+- GitHub: https://github.com/shantanu9
+- AI Tool: https://aiadvisor.co.in
