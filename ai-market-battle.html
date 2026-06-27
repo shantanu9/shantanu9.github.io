@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Real AI Market Battle — How I Think · Shantanu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+
+  :root {
+    --ink: #0e0e10;
+    --paper: #f6f5f1;
+    --rule: #d6d3cc;
+    --accent: #1a43c8;
+    --accent-soft: #e8edff;
+    --warn: #c84a1a;
+    --green: #1a8a42;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── READING PROGRESS ── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1.5px solid var(--rule);
+    padding: .65rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-back {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .nav-back:hover { text-decoration: underline; }
+  .nav-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  /* ── MASTHEAD ── */
+  header {
+    border-bottom: 3px solid var(--ink);
+    padding: 2rem 2.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 1rem;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
+  header h1 {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+  }
+  header h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: #555;
+  }
+  .meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  /* ── SUMMARY BAR ── */
+  .summary-bar {
+    background: var(--ink);
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid #333;
+  }
+  .stat-cell {
+    padding: 1.2rem 1.5rem;
+    border-right: 1px solid #333;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    letter-spacing: -.03em;
+    line-height: 1;
+    color: #7fa3ff;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: .3rem;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 5rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { margin-bottom: 3.5rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+    padding-bottom: .6rem;
+    border-bottom: 1.5px solid var(--rule);
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: #fff;
+    padding: .15rem .5rem;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .section-tag.blue {
+    background: var(--accent);
+  }
+  section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+
+  /* ── BODY TEXT ── */
+  .prose p {
+    font-size: .95rem;
+    line-height: 1.75;
+    color: #222;
+    margin-bottom: 1.1rem;
+    max-width: 720px;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ── INSIGHT CALLOUT ── */
+  .insight {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1.4rem 0;
+    font-size: .88rem;
+    line-height: 1.65;
+    max-width: 720px;
+  }
+  .insight strong { color: var(--accent); }
+
+  .insight.warn {
+    background: #fff4f0;
+    border-left-color: var(--warn);
+  }
+  .insight.warn strong { color: var(--warn); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 1.8rem 0;
+    padding: 1.4rem 1.6rem;
+    border: 1.5px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    background: #fff;
+    border-radius: 0 6px 6px 0;
+    max-width: 680px;
+  }
+  .pull-quote p {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* ── ARGUMENT CARDS ── */
+  .arg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: .5rem;
+  }
+  .arg-card {
+    border: 1.5px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .arg-card-head {
+    padding: .7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    border-bottom: 1.5px solid var(--rule);
+    background: #fafaf8;
+  }
+  .arg-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .arg-title { font-weight: 700; font-size: .9rem; line-height: 1.2; }
+  .arg-sub { font-size: .75rem; color: #666; margin-top: .1rem; font-family: var(--mono); }
+  .arg-body { padding: .9rem 1rem; font-size: .84rem; line-height: 1.6; color: #333; }
+
+  /* badges */
+  .badge-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: .15rem .45rem;
+    border-radius: 3px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .badge-blue  { background: var(--accent-soft); color: var(--accent); }
+  .badge-red   { background: #ffeee8; color: var(--warn); }
+  .badge-green { background: #e6f7ed; color: var(--green); }
+  .badge-gray  { background: #efefef; color: #555; }
+
+  /* ── CHAIN DIAGRAM ── */
+  .chain-wrapper {
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.75rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .chain-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 1.4rem;
+  }
+  .chain {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: .25rem;
+  }
+  .chain-step {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .chain-step.visible { opacity: 1; transform: translateY(0); }
+  .chain-connector {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    color: var(--rule);
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: color .4s;
+  }
+  .chain-connector.visible { color: var(--accent); }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: .08em;
+    margin-bottom: .3rem;
+  }
+  .step-label {
+    font-weight: 700;
+    font-size: .82rem;
+    line-height: 1.25;
+    margin-bottom: .3rem;
+  }
+  .step-desc {
+    font-size: .76rem;
+    color: #666;
+    line-height: 1.45;
+  }
+
+  /* ── PLAYERS TABLE ── */
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: left;
+    color: #888;
+    padding: .5rem .75rem;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  td { padding: .65rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafafa; }
+
+  /* ── TREND ROW ── */
+  .trend-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: .5rem; }
+  .trend-card {
+    padding: 1rem 1.1rem;
+    border: 1.5px solid var(--rule);
+    border-radius: 6px;
+    background: #fff;
+  }
+  .trend-card h4 { font-size: .88rem; font-weight: 700; margin-bottom: .4rem; }
+  .trend-card p  { font-size: .82rem; color: #444; line-height: 1.55; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1.5px solid var(--rule);
+    padding: 1.5rem 2.5rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .summary-bar { grid-template-columns: repeat(2, 1fr); }
+    header { grid-template-columns: 1fr; }
+    .meta { text-align: left; margin-top: .75rem; }
+    .trend-row { grid-template-columns: 1fr; }
+    header { padding: 1.5rem 1.25rem 1.25rem; }
+    main { padding: 2rem 1.25rem 4rem; }
+    footer { padding: 1.25rem; }
+    .top-nav { padding: .65rem 1.25rem; }
+    .chain { flex-direction: column; }
+    .chain-connector { transform: rotate(90deg); align-self: flex-start; margin-left: .5rem; padding-top: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chain-step, .chain-connector { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="/" class="nav-back">← Portfolio</a>
+  <span class="nav-label">How I Think</span>
+</nav>
+
+<!-- MASTHEAD -->
+<header>
+  <div>
+    <div class="eyebrow">How I Think · AI Strategy & Market Structure</div>
+    <h1>The Real AI Market Battle<br><em>Isn't About GPU Shortages</em></h1>
+  </div>
+  <div class="meta">
+    Shantanu<br>
+    Published June 2026<br>
+    7 min read<br>
+    @shantanubuilds
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="summary-bar">
+  <div class="stat-cell">
+    <div class="stat-num">POC→Scale</div>
+    <div class="stat-label">Where enterprise AI economics break</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">80–95%</div>
+    <div class="stat-label">Performance of fine-tuned small models vs. frontier</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">5 Links</div>
+    <div class="stat-label">In the causal chain that explains the market</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-num">No Villain</div>
+    <div class="stat-label">GPU scarcity is structural, not a strategy</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- INTRO -->
+  <section>
+    <div class="prose">
+      <p>A common narrative in AI circles is that GPU scarcity is a deliberate supply strategy — that chip makers and model providers are engineering a shortage to control the market. I used to find that framing compelling. It felt like it explained a lot: the waitlists, the pricing, the power asymmetries.</p>
+      <p>But after spending time closer to how enterprises actually buy and deploy AI, I think the conspiracy framing is both unnecessary and strategically misleading. The real story is cleaner, and frankly more interesting.</p>
+    </div>
+    <div class="insight">
+      <strong>The argument in one sentence:</strong> GPU scarcity is a natural consequence of every participant in the AI ecosystem needing the same hardware simultaneously — not a coordinated strategy. The more important battle is about who captures the value generated by AI inference.
+    </div>
+  </section>
+
+  <!-- SECTION 1: POC PROBLEM -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag">01</span>
+      <h2>The POC Problem — Pilots look great. Scale breaks the economics.</h2>
+    </div>
+    <div class="prose">
+      <p>Frontier models — GPT-4, Claude, Gemini — are genuinely impressive during pilots. Enterprises run a proof of concept, see measurable gains in productivity or automation, and the ROI case writes itself. The problem arrives when these pilots try to scale.</p>
+      <p>Token consumption doesn't grow linearly with adoption. It grows exponentially. At enterprise-wide deployment, inference costs become a serious budget line — and suddenly the economics that looked clean at 50 users look very different at 50,000.</p>
+    </div>
+    <div class="insight warn">
+      <strong>The sticker shock moment:</strong> An enterprise that ran a successful 3-month frontier model POC may find that full-scale deployment costs 40–100× more in inference fees than the pilot suggested. This isn't a billing surprise — it's a structural economic reality that drives everything that follows.
+    </div>
+  </section>
+
+  <!-- SECTION 2: BAZOOKA PROBLEM -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag">02</span>
+      <h2>The Bazooka Problem — Most enterprise workloads don't need frontier intelligence.</h2>
+    </div>
+    <div class="prose">
+      <p>Here's the realization that tends to follow the sticker shock: most enterprise AI workloads don't require frontier-level intelligence. The bulk of what enterprises actually want AI to do — classify documents, extract structured data, summarize reports, route requests, answer domain-specific queries — doesn't require the same model that can write poetry and debug code.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>Using a frontier model for every request is like using a bazooka to hunt a bird. It works, but the cost-to-outcome ratio makes no sense at scale.</p>
+    </div>
+
+    <div class="arg-grid">
+      <div class="arg-card">
+        <div class="arg-card-head">
+          <div class="arg-icon" style="background:#eafff5;">📄</div>
+          <div>
+            <div class="arg-title">High-Volume Routine Workloads</div>
+            <div class="arg-sub">Doesn't need GPT-4</div>
+          </div>
+        </div>
+        <div class="arg-body">
+          Document classification, data extraction, summarization, intent routing, FAQ answering, form parsing. These tasks represent 70–80% of enterprise AI volume.
+          <div class="badge-row">
+            <span class="badge badge-green">Fine-tune candidate</span>
+            <span class="badge badge-blue">High frequency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arg-card">
+        <div class="arg-card-head">
+          <div class="arg-icon" style="background:#fff3e6;">🧠</div>
+          <div>
+            <div class="arg-title">Complex Reasoning Tasks</div>
+            <div class="arg-sub">Frontier earns its cost here</div>
+          </div>
+        </div>
+        <div class="arg-body">
+          Multi-step reasoning, code generation, complex synthesis, legal analysis, open-ended research. These tasks benefit from frontier models — but are lower in volume.
+          <div class="badge-row">
+            <span class="badge badge-red">Frontier justified</span>
+            <span class="badge badge-gray">Lower frequency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="arg-card">
+        <div class="arg-card-head">
+          <div class="arg-icon" style="background:#f0f4ff;">⚙️</div>
+          <div>
+            <div class="arg-title">The AI Factory Response</div>
+            <div class="arg-sub">The rational enterprise move</div>
+          </div>
+        </div>
+        <div class="arg-body">
+          Deploy private GPUs, fine-tune smaller foundation models on proprietary data. Achieve 80–95% of required performance at a fraction of the inference cost. This is a rational infrastructure decision, not a compromise.
+          <div class="badge-row">
+            <span class="badge badge-blue">On-prem inference</span>
+            <span class="badge badge-green">Data moat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FRONTIER COUNTERMOVE -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag">03</span>
+      <h2>The Frontier Countermove — Their challenge is structural.</h2>
+    </div>
+    <div class="prose">
+      <p>Frontier model providers aren't sitting still watching this happen. If enterprises can replicate "good enough" intelligence cheaply, the API revenue model gets pressured from the bottom up.</p>
+      <p>Their response is to relentlessly drive down the cost of intelligence — through model distillation, better inference infrastructure, custom silicon, and the economies of scale that come from serving millions of users. The objective is to make frontier consumption economically attractive enough that enterprises don't fully migrate to self-hosted AI.</p>
+    </div>
+    <div class="insight">
+      <strong>The resulting equilibrium:</strong> Enterprises will run hybrid architectures — frontier models for complex, high-value reasoning tasks; smaller, specialized models for high-volume, routine workloads. Neither side fully wins. Both stay relevant. This is where the market is heading.
+    </div>
+  </section>
+
+  <!-- SECTION 4: GPU DEMAND -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag">04</span>
+      <h2>The GPU Demand Story — Scarcity without a villain.</h2>
+    </div>
+    <div class="prose">
+      <p>So where do GPU shortages fit? Every participant in this ecosystem needs GPUs simultaneously. When every layer of a global industry is competing for the same hardware at the same time, scarcity is a predictable outcome — not a coordinated strategy.</p>
+    </div>
+
+    <table style="margin-top:.75rem;">
+      <thead>
+        <tr>
+          <th>Ecosystem Participant</th>
+          <th>Why They Need GPUs</th>
+          <th>Demand Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontier Model Labs</strong></td>
+          <td>Training and serving models at scale; next-gen model development</td>
+          <td><span class="badge badge-red">Explosive / training</span></td>
+        </tr>
+        <tr>
+          <td><strong>Hyperscalers</strong></td>
+          <td>Cloud AI offerings, internal AI products, platform infrastructure</td>
+          <td><span class="badge badge-red">Massive / platform</span></td>
+        </tr>
+        <tr>
+          <td><strong>Enterprises</strong></td>
+          <td>AI Factories, private inference, fine-tuning, data sovereignty</td>
+          <td><span class="badge badge-green">Fastest CAGR</span></td>
+        </tr>
+        <tr>
+          <td><strong>GPU Neoclouds</strong></td>
+          <td>Buy in bulk to resell as GPU-as-a-Service to all of the above</td>
+          <td><span class="badge badge-red">Buy-to-resell</span></td>
+        </tr>
+        <tr>
+          <td><strong>Software Companies</strong></td>
+          <td>AI-powered products; inference at application scale</td>
+          <td><span class="badge badge-blue">Inference-driven</span></td>
+        </tr>
+        <tr>
+          <td><strong>Sovereign Governments</strong></td>
+          <td>National AI infrastructure, data residency, strategic independence</td>
+          <td><span class="badge badge-blue">Rapidly scaling</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight" style="margin-top:1.2rem;">
+      <strong>The key distinction:</strong> One framing implies a villain engineering the shortage. The other implies a structural supply-demand mismatch during a technology transition. The latter is more accurate — and more useful if you're trying to make decisions in this market.
+    </div>
+  </section>
+
+  <!-- SECTION 5: ACTUAL BATTLE -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag blue">Signal</span>
+      <h2>The Actual Battle — Who captures the value generated by AI inference?</h2>
+    </div>
+    <div class="prose">
+      <p>The real competition isn't about who controls GPU supply. It's about who captures the value generated by AI inference.</p>
+    </div>
+
+    <div class="trend-row">
+      <div class="trend-card">
+        <h4>Frontier Model Providers</h4>
+        <p>Want enterprises to consume intelligence as a service — usage-based, API-first, with the provider owning the model and the compute. Revenue scales with enterprise adoption; switching cost comes from model quality.</p>
+      </div>
+      <div class="trend-card">
+        <h4>Enterprises & IT Services</h4>
+        <p>Want to own more of the AI stack — their own models, their own infrastructure, their own data moats. Capture value through AI Factories, customized foundation models, and dedicated private inference. Reduces dependency and cost.</p>
+      </div>
+      <div class="trend-card">
+        <h4>Infrastructure Vendors</h4>
+        <p>HCL, Accenture, Microsoft, Dell, HPE, NVIDIA are all positioning for a world where the answer to "where does your AI run?" is increasingly: on our infrastructure, with our models, trained on our data.</p>
+      </div>
+    </div>
+
+    <div class="insight" style="margin-top:1.2rem;">
+      <strong>Why everyone is building AI Factories:</strong> This tension explains why companies across the entire stack — IT services, hyperscalers, hardware OEMs, and chip makers — are simultaneously investing in AI Factory and Private AI offerings. Each is positioning for the same strategic shift.
+    </div>
+  </section>
+
+  <!-- THE CHAIN -->
+  <section>
+    <div class="section-header">
+      <span class="section-tag">Framework</span>
+      <h2>The Sequence I Use to Think About This Market</h2>
+    </div>
+    <div class="prose">
+      <p>When I want to make sense of a move in the AI market, I run it through a simple causal chain. Every link causes the next — no conspiracy assumptions required. This sequence maps cleanly onto what hyperscalers, enterprises, and IT service providers are actually doing today.</p>
+    </div>
+
+    <div class="chain-wrapper" id="chain-wrapper">
+      <div class="chain-title">Causal Chain · Enterprise AI Market Structure</div>
+      <div class="chain" id="chain">
+
+        <div class="chain-step" data-delay="0">
+          <div class="step-num">01</div>
+          <div class="step-label">AI Adoption</div>
+          <div class="step-desc">Frontier models deliver strong POC results. Enterprise ROI cases are compelling.</div>
+        </div>
+
+        <div class="chain-connector" data-delay="150">→</div>
+
+        <div class="chain-step" data-delay="300">
+          <div class="step-num">02</div>
+          <div class="step-label">Cost Pressure</div>
+          <div class="step-desc">Token consumption explodes at scale. Inference costs become a major budget line.</div>
+        </div>
+
+        <div class="chain-connector" data-delay="450">→</div>
+
+        <div class="chain-step" data-delay="600">
+          <div class="step-num">03</div>
+          <div class="step-label">AI Factory Movement</div>
+          <div class="step-desc">Enterprises deploy private GPUs and fine-tune specialized models for routine workloads.</div>
+        </div>
+
+        <div class="chain-connector" data-delay="750">→</div>
+
+        <div class="chain-step" data-delay="900">
+          <div class="step-num">04</div>
+          <div class="step-label">Frontier Cost Reduction</div>
+          <div class="step-desc">Providers respond with distillation, custom silicon, and economies of scale to stay competitive.</div>
+        </div>
+
+        <div class="chain-connector" data-delay="1050">→</div>
+
+        <div class="chain-step" data-delay="1200">
+          <div class="step-num">05</div>
+          <div class="step-label">Hybrid AI Architecture</div>
+          <div class="step-desc">Frontier for complex tasks. Private models for routine volume. Neither side fully displaces the other.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:1.2rem;">
+      <p>This is a frame you can comfortably use in a room with AI platform leaders, enterprise CTOs, or infrastructure investors without needing to defend a contested premise. And it's more actionable — because if you understand the real incentives, you can figure out where the value is going to accumulate.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>How I Think · Shantanu · June 2026</span>
+  <span>
+    <a href="https://linkedin.com/in/shantanubuilds" target="_blank">LinkedIn @shantanubuilds</a>
+    &nbsp;·&nbsp;
+    <a href="https://instagram.com/shantanubuilds" target="_blank">Instagram @shantanubuilds</a>
+    &nbsp;·&nbsp;
+    <a href="/">All Essays</a>
+  </span>
+</footer>
+
+<script>
+  // Reading progress
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  });
+
+  // Chain animation on scroll into view
+  const chainWrapper = document.getElementById('chain-wrapper');
+  const chainSteps = document.querySelectorAll('.chain-step');
+  const chainConns = document.querySelectorAll('.chain-connector');
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      chainSteps.forEach(el => {
+        const delay = parseInt(el.dataset.delay) || 0;
+        setTimeout(() => el.classList.add('visible'), delay);
+      });
+      chainConns.forEach((el, i) => {
+        const delay = parseInt(el.dataset.delay) || 0;
+        setTimeout(() => el.classList.add('visible'), delay);
+      });
+      observer.disconnect();
+    }
+  }, { threshold: 0.25 });
+
+  if (chainWrapper) observer.observe(chainWrapper);
+</script>
+</body>
+</html>
